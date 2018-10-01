@@ -5,9 +5,7 @@ The GitHub repo accompanies the YouTube series.
 
 To get the project in its state at any point in the series please refer to previous commits.
 
-## Intended Audience
-
-The project is intended for the **Intermediate Unity Programmer**. S
+## Covered Material
 
 - Unity
     - Scriptable Objects
@@ -19,10 +17,6 @@ The project is intended for the **Intermediate Unity Programmer**. S
     - Abstract classes
     - Linq Queries
     - Arrow syntax
-
-## Friendly Advice
-
-This project has some specialized content and it can be stressfull when something we don't understand isn't working. It is important to *avoid* this scenario. For instance, if the point cloud geometry shader isn't working, I recomended not to 'play', 'fudge' or 'experiment' within this project until it works. Its way more fun to start a new simple project about geometry shaders *only*, learn them inside out, then come back to this project.
 
 ## Sharing, Forking and Getting help
 
