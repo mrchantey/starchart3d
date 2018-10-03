@@ -8,7 +8,6 @@ public class StarDatabaseLoader : DatabaseLoader
 {
 
     public string databasePath;
-    public StarInfo[] stars;
 
 
     public override void LoadDatabase()
