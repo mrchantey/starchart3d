@@ -14,4 +14,4 @@ MonoBehaviour:
   folderPath: Assets/Procedual Assets/Prefabs
   starMeshGenerator: {fileID: 11400000, guid: 98c0afc4fb0803042956bd39f7b1b0da, type: 2}
   prefabName: Star Prefab
-  material: {fileID: 0}
+  material: {fileID: 2100000, guid: c8171010aeabc9342986c420cdccffaa, type: 2}
