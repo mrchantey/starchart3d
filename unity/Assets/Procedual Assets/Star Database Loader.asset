@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0940a8ca1df2dcd4698da1c4e4749baf, type: 3}
+  m_Name: Star Database Loader
+  m_EditorClassIdentifier: 
+  databasePath: Assets/Databases/hyg_sample.csv
+  stars:
+  - hygId: 0
+    properName: Sol
+    position: {x: 0.000005, y: 0, z: 0}
+  - hygId: 1
+    properName: 
+    position: {x: 219.74051, y: 0.003449, z: 4.177065}
+  - hygId: 2
+    properName: 
+    position: {x: 45.21092, y: 0.003365, z: -16.008995}
+  - hygId: 3
+    properName: 
+    position: {x: 344.5528, y: 0.030213, z: 277.61496}
+  - hygId: 4
+    properName: 
+    position: {x: 82.83551, y: 0.012476, z: -105.61954}
+  - hygId: 5
+    properName: 
+    position: {x: 195.71426, y: 0.034068, z: -167.6953}
+  - hygId: 6
+    properName: 
+    position: {x: 54.905296, y: 0.017912, z: 3.787796}
+  - hygId: 7
+    properName: 
+    position: {x: 54.367897, y: 0.020886, z: 19.827114}
+  - hygId: 8
+    properName: 
+    position: {x: 180.65453, y: 0.086213, z: 87.66839}

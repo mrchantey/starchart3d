@@ -8,7 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0940a8ca1df2dcd4698da1c4e4749baf, type: 3}
-  m_Name: New Star Database Loader
+  m_Script: {fileID: 11500000, guid: 209416c1e2e372f41b08e56f6f430c1d, type: 3}
+  m_Name: Star Mesh Generator
   m_EditorClassIdentifier: 
-  databasePath: Assets/Databases/hyg_sample.csv
+  folderPath: Assets/Procedual Assets/Meshes
+  database: {fileID: 11400000, guid: 1a1f026c02153714ea082e8a32dc228a, type: 2}
