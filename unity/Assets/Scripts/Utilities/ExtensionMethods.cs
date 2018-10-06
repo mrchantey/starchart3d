@@ -1,6 +1,7 @@
 
 
 using System.Collections.Generic;
+using System.Linq;
 
 public static class ExtensionMethods
 {
@@ -13,6 +14,11 @@ public static class ExtensionMethods
             action(element);
         }
     }
+    public static IEnumerable<T> SubArray<T>(this IEnumerable<T> source, int startIndex, int count)
+    {
+        return source.Skip(startIndex).Take(count);
+    }
+
 
 
 }

@@ -8,6 +8,7 @@ public class StarDatabaseLoader : DatabaseLoader
 {
 
     public string databasePath;
+    [HideInInspector]
     public StarInfo[] stars;
 
 

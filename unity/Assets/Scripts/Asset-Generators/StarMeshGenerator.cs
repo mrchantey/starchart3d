@@ -12,13 +12,21 @@ public class StarMeshGenerator : AssetGenerator
 
 
     public StarDatabaseLoader database;
-
+    [Range(2000, 30000)]
+    public int starsPerMesh = 10000;
 
     protected override void GenerateAssets()
     {
 
-        var mesh = CreateMesh(database.stars, "stars");
-        AssetUtility.SaveMeshAsset(folderPath, mesh);
+
+        for (int i = 0; i < database.stars.Length; i += starsPerMesh)
+        {
+            string name = "stars " + (i / starsPerMesh);
+            StarInfo[] subStars = database.stars.SubArray(i, starsPerMesh).ToArray();
+            var mesh = CreateMesh(subStars, name);
+            AssetUtility.SaveMeshAsset(folderPath, mesh);
+        }
+
     }
 
 

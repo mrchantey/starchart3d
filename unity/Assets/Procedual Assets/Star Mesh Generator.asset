@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   folderPath: Assets/Procedual Assets/Meshes
   database: {fileID: 11400000, guid: 1a1f026c02153714ea082e8a32dc228a, type: 2}
+  starsPerMesh: 10000
