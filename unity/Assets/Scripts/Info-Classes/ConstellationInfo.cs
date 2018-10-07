@@ -2,7 +2,7 @@
 
 using System.Linq;
 using System.Text.RegularExpressions;
-
+using UnityEngine;
 
 [System.Serializable]
 public class ConstellationInfo
@@ -11,7 +11,7 @@ public class ConstellationInfo
     public StarInfo[] stars;
     public string id;
     public string name;
-
+    public Vector3 position;
 
     public ConstellationInfo(string whiteSpaceText, StarDatabaseLoader starDatabase)
     {
@@ -28,6 +28,12 @@ public class ConstellationInfo
             .Select(idInt => starDatabase.GetStarByHipId(idInt))
             .ToArray();
         // .ToArray();
+
+        position = stars
+            .Select(s => s.position)
+            .Aggregate((p, total) => total + p)
+            / stars.Length;
+
     }
 
 
