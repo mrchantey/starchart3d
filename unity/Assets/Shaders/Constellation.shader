@@ -30,6 +30,7 @@ Shader "StarChart/Constellation"
             struct appdata
             {
                 float4 pos : POSITION;
+                float4 vel : NORMAL;
             };
 
             struct v2g 
@@ -45,7 +46,7 @@ Shader "StarChart/Constellation"
             v2g vert (appdata i)
             {
                 v2g o;
-                o.pos = i.pos;
+                o.pos = GetJ2000Offset(i.pos,i.vel);
                 return o;
             };
 

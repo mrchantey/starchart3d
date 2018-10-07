@@ -62,11 +62,15 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _MagClamp: 0.03
+    - _MagDelta: 2.234
+    - _MagMax: 0.0787
+    - _MaxRadius: 0.258
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Radius: 0.33
+    - _Radius: 0.249
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1

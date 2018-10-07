@@ -43,6 +43,10 @@ public class StarMeshGenerator : AssetGenerator
         .Select((s, i) => i)
         .ToArray();
 
+        mesh.normals = stars
+            .Select(s => s.velocity)
+            .ToArray();
+
 
         mesh.tangents = stars
         .Select(s => new Vector4(

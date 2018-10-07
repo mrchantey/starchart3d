@@ -16,6 +16,7 @@ public class StarInfo
     public Color color;
 
     public Vector3 position;
+    public Vector3 velocity;
 
     public StarInfo(string csvLine)
     {
@@ -34,6 +35,11 @@ public class StarInfo
           ParseUtility.SafeFloatParse(lines[17]),
           ParseUtility.SafeFloatParse(lines[18]),
           ParseUtility.SafeFloatParse(lines[19])
+        );
+        velocity = new Vector3(
+          ParseUtility.SafeFloatParse(lines[20]),
+          ParseUtility.SafeFloatParse(lines[21]),
+          ParseUtility.SafeFloatParse(lines[22])
         );
         position = Vector3.ClampMagnitude(position, 1000);
     }

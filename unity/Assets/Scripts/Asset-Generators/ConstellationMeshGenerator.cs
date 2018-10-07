@@ -31,6 +31,10 @@ public class ConstellationMeshGenerator : AssetGenerator
         .Select(s => s.position)
         .ToArray();
 
+        mesh.normals = stars
+        .Select(s => s.velocity)
+        .ToArray();
+
         int[] indicies = stars
         .Select((s, i) => i)
         .ToArray();

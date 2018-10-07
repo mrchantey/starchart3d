@@ -26,6 +26,7 @@ Shader "StarChart/Star"
 
       struct appdata{
         float4 pos: POSITION; //mesh.vertices
+        float4 vel: NORMAL;
         float2 mag: TEXCOORD0; //mesh.uv // x=apparentMag, y=absMag
         float4 color : TANGENT;
       };
@@ -44,7 +45,7 @@ Shader "StarChart/Star"
 
       v2g vert (appdata v){ 
         v2g o;
-        o.pos = v.pos;
+        o.pos = GetJ2000Offset(v.pos,v.vel);
         o.mag= v.mag;
         o.color  = v.color;
         return o;

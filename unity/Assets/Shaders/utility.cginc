@@ -4,6 +4,12 @@
 
 #include "UnityCG.cginc"
 
+    float J2000Offset;
+
+    float4 GetJ2000Offset(float4 pos, float4 velocity){
+        return pos + velocity * J2000Offset;
+    }
+
 
 
   float4 Object2OffsetClipPos(float4 pos,float3 offset){
