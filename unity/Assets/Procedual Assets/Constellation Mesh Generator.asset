@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d76635ff3b88fc499253381f8e7dcee, type: 3}
   m_Name: Constellation Mesh Generator
   m_EditorClassIdentifier: 
-  folderPath: 
-  database: {fileID: 0}
+  folderPath: Assets/Procedual Assets/Constellation Meshes
+  database: {fileID: 11400000, guid: 21396daaae388ac4fab1d9caec277b98, type: 2}

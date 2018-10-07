@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 209416c1e2e372f41b08e56f6f430c1d, type: 3}
   m_Name: Star Mesh Generator
   m_EditorClassIdentifier: 
-  folderPath: Assets/Procedual Assets/Meshes
+  folderPath: Assets/Procedual Assets/Star Meshes
   database: {fileID: 11400000, guid: 1a1f026c02153714ea082e8a32dc228a, type: 2}
   starsPerMesh: 10000

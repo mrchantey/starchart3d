@@ -8,7 +8,7 @@ using UnityEngine;
 public class MeshPrefabGenerator : AssetGenerator
 {
 
-    public StarMeshGenerator starMeshGenerator;
+    public AssetGenerator meshGenerator;
 
     public string prefabName = "Mesh Prefab";
 
@@ -17,7 +17,7 @@ public class MeshPrefabGenerator : AssetGenerator
     protected override void GenerateAssets()
     {
         var parentPrefab = new GameObject(prefabName);
-        AssetUtility.GetAssetsAtPath<Mesh>(starMeshGenerator.folderPath)
+        AssetUtility.GetAssetsAtPath<Mesh>(meshGenerator.folderPath)
         .ForEach(m => CreateMeshGameObject(m, parentPrefab));
 
         AssetUtility.SavePrefabAsset(folderPath, parentPrefab);
