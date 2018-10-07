@@ -9,7 +9,12 @@ public class StarInfo
 
     public int hygId;
     public int hipId;
+    public float apparentMagnitude;//magnitude from earth
+    public float absoluteMagnitude;//actual magnitude
     public string properName;
+    public float colorIndex;
+    public Color color;
+
     public Vector3 position;
 
     public StarInfo(string csvLine)
@@ -19,11 +24,18 @@ public class StarInfo
         hygId = ParseUtility.SafeIntParse(lines[0]);
         hipId = ParseUtility.SafeIntParse(lines[1]);
         properName = lines[6];
+        apparentMagnitude = ParseUtility.SafeFloatParse(lines[13]);
+        absoluteMagnitude = ParseUtility.SafeFloatParse(lines[14]);
+
+        colorIndex = ParseUtility.SafeFloatParse(lines[16]);
+        color = ColorUtility.ColorIndexToRGB(colorIndex);
+
         position = new Vector3(
           ParseUtility.SafeFloatParse(lines[17]),
           ParseUtility.SafeFloatParse(lines[18]),
           ParseUtility.SafeFloatParse(lines[19])
         );
+        position = Vector3.ClampMagnitude(position, 1000);
     }
 
 }

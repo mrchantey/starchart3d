@@ -43,6 +43,21 @@ public class StarMeshGenerator : AssetGenerator
         .Select((s, i) => i)
         .ToArray();
 
+
+        mesh.tangents = stars
+        .Select(s => new Vector4(
+            s.color.r,
+            s.color.g,
+            s.color.b,
+            s.color.a))
+        .ToArray();
+
+        mesh.uv = stars
+        .Select(s => new Vector2(
+            s.apparentMagnitude,
+            s.absoluteMagnitude))
+        .ToArray();
+
         mesh.SetIndices(indicies, MeshTopology.Points, 0);
 
         return mesh;
