@@ -8,6 +8,7 @@ public class StarInfo
 {
 
     public int hygId;
+    public int hipId;
     public string properName;
     public Vector3 position;
 
@@ -16,6 +17,7 @@ public class StarInfo
         var lines = csvLine.Split(',');
 
         hygId = ParseUtility.SafeIntParse(lines[0]);
+        hipId = ParseUtility.SafeIntParse(lines[1]);
         properName = lines[6];
         position = new Vector3(
           ParseUtility.SafeFloatParse(lines[17]),

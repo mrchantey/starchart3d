@@ -1,0 +1,242 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865714b85006c3a469b7daac076ac3f9, type: 3}
+  m_Name: Constellation Database Loader
+  m_EditorClassIdentifier: 
+  folderPath: Assets/Databases/skycultures/maori
+  starDatabase: {fileID: 11400000, guid: 1a1f026c02153714ea082e8a32dc228a, type: 2}
+  constellations:
+  - stars:
+    - hygId: 60893
+      hipId: 61084
+      properName: Gacrux
+      position: {x: -14.606901, y: -1.998688, z: -22.800749}
+    - hygId: 60530
+      hipId: 60718
+      properName: Acrux
+      position: {x: -44.363754, y: -5.171957, z: -88.034515}
+    - hygId: 62239
+      hipId: 62434
+      properName: Becrux
+      position: {x: -42.16877, y: -8.909619, z: -73.72315}
+    - hygId: 59565
+      hipId: 59747
+      properName: 
+      position: {x: -54.778606, y: -3.62525, z: -90.466}
+    id: 001
+    name: Taki-o-Autahi
+  - stars:
+    - hygId: 68483
+      hipId: 68702
+      properName: Hadar
+      position: {x: -50.954052, y: -30.56287, z: -104.4787}
+    - hygId: 71456
+      hipId: 71683
+      properName: Rigil Kentaurus
+      position: {x: -0.495203, y: -0.414084, z: -1.156625}
+    id: 002
+    name: Te Taura-o-te-waka-o-tamarereti
+  - stars:
+    - hygId: 26662
+      hipId: 26727
+      properName: Alnitak
+      position: {x: 18.918488, y: 224.8094, z: -7.651875}
+    - hygId: 26246
+      hipId: 26311
+      properName: Alnilam
+      position: {x: 62.775124, y: 602.66693, z: -12.712683}
+    - hygId: 26246
+      hipId: 26311
+      properName: Alnilam
+      position: {x: 62.775124, y: 602.66693, z: -12.712683}
+    - hygId: 25865
+      hipId: 25930
+      properName: Mintaka
+      position: {x: 25.868116, y: 210.72966, z: -1.108306}
+    id: 003
+    name: Tau-toro
+  - stars:
+    - hygId: 82144
+      hipId: 82396
+      properName: 
+      position: {x: -4.842163, y: -15.39568, z: -11.006616}
+    - hygId: 82263
+      hipId: 82514
+      properName: 
+      position: {x: -35.43289, y: -115.66204, z: -94.67156}
+    - hygId: 82263
+      hipId: 82514
+      properName: 
+      position: {x: -35.43289, y: -115.66204, z: -94.67156}
+    - hygId: 82419
+      hipId: 82671
+      properName: 
+      position: {x: -165.25476, y: -557.85004, z: -530.5611}
+    - hygId: 82419
+      hipId: 82671
+      properName: 
+      position: {x: -165.25476, y: -557.85004, z: -530.5611}
+    - hygId: 83885
+      hipId: 84143
+      properName: 
+      position: {x: -3.401345, y: -16.05484, z: -15.432267}
+    - hygId: 83885
+      hipId: 84143
+      properName: 
+      position: {x: -3.401345, y: -16.05484, z: -15.432267}
+    - hygId: 85965
+      hipId: 86228
+      properName: Sargas
+      position: {x: -6.654055, y: -67.01664, z: -62.79654}
+    - hygId: 85965
+      hipId: 86228
+      properName: Sargas
+      position: {x: -6.654055, y: -67.01664, z: -62.79654}
+    - hygId: 86804
+      hipId: 87073
+      properName: 
+      position: {x: -24.497404, y: -451.7727, z: -381.35132}
+    - hygId: 86804
+      hipId: 87073
+      properName: 
+      position: {x: -24.497404, y: -451.7727, z: -381.35132}
+    - hygId: 86403
+      hipId: 86670
+      properName: 
+      position: {x: -8.785101, y: -114.74799, z: -93.29278}
+    - hygId: 86403
+      hipId: 86670
+      properName: 
+      position: {x: -8.785101, y: -114.74799, z: -93.29278}
+    - hygId: 85665
+      hipId: 85927
+      properName: Shaula
+      position: {x: -16.048582, y: -138.74979, z: -105.649895}
+    - hygId: 85665
+      hipId: 85927
+      properName: Shaula
+      position: {x: -16.048582, y: -138.74979, z: -105.649895}
+    - hygId: 85436
+      hipId: 85696
+      properName: 
+      position: {x: -17.880983, y: -139.40881, z: -107.054825}
+    id: 004
+    name: The Great Boat of Tama Rereti
+  - stars:
+    - hygId: 21368
+      hipId: 21421
+      properName: Aldebaran
+      position: {x: 7.02722, y: 18.287603, z: 5.806661}
+    - hygId: 20842
+      hipId: 20894
+      properName: 
+      position: {x: 17.209732, y: 40.8716, z: 12.608233}
+    - hygId: 20842
+      hipId: 20894
+      properName: 
+      position: {x: 17.209732, y: 40.8716, z: 12.608233}
+    - hygId: 20155
+      hipId: 20205
+      properName: 
+      position: {x: 20.197374, y: 43.211662, z: 13.342572}
+    - hygId: 20155
+      hipId: 20205
+      properName: 
+      position: {x: 20.197374, y: 43.211662, z: 13.342572}
+    - hygId: 20405
+      hipId: 20455
+      properName: 
+      position: {x: 18.695965, y: 41.472034, z: 14.380508}
+    - hygId: 20405
+      hipId: 20455
+      properName: 
+      position: {x: 18.695965, y: 41.472034, z: 14.380508}
+    - hygId: 20837
+      hipId: 20889
+      properName: 
+      position: {x: 16.488447, y: 39.1368, z: 14.772771}
+    id: 005
+    name: Matakarehu
+  - stars:
+    - hygId: 21368
+      hipId: 21421
+      properName: Aldebaran
+      position: {x: 7.02722, y: 18.287603, z: 5.806661}
+    - hygId: 20842
+      hipId: 20894
+      properName: 
+      position: {x: 17.209732, y: 40.8716, z: 12.608233}
+    - hygId: 20842
+      hipId: 20894
+      properName: 
+      position: {x: 17.209732, y: 40.8716, z: 12.608233}
+    - hygId: 20155
+      hipId: 20205
+      properName: 
+      position: {x: 20.197374, y: 43.211662, z: 13.342572}
+    - hygId: 20155
+      hipId: 20205
+      properName: 
+      position: {x: 20.197374, y: 43.211662, z: 13.342572}
+    - hygId: 20405
+      hipId: 20455
+      properName: 
+      position: {x: 18.695965, y: 41.472034, z: 14.380508}
+    - hygId: 20405
+      hipId: 20455
+      properName: 
+      position: {x: 18.695965, y: 41.472034, z: 14.380508}
+    - hygId: 20837
+      hipId: 20889
+      properName: 
+      position: {x: 16.488447, y: 39.1368, z: 14.772771}
+    - hygId: 21368
+      hipId: 21421
+      properName: Aldebaran
+      position: {x: 7.02722, y: 18.287603, z: 5.806661}
+    - hygId: 20837
+      hipId: 20889
+      properName: 
+      position: {x: 16.488447, y: 39.1368, z: 14.772771}
+    - hygId: 20155
+      hipId: 20205
+      properName: 
+      position: {x: 20.197374, y: 43.211662, z: 13.342572}
+    - hygId: 25865
+      hipId: 25930
+      properName: Mintaka
+      position: {x: 25.868116, y: 210.72966, z: -1.108306}
+    - hygId: 17457
+      hipId: 17499
+      properName: 
+      position: {x: 62.96563, y: 94.12411, z: 50.687767}
+    - hygId: 20155
+      hipId: 20205
+      properName: 
+      position: {x: 20.197374, y: 43.211662, z: 13.342572}
+    - hygId: 26662
+      hipId: 26727
+      properName: Alnitak
+      position: {x: 18.918488, y: 224.8094, z: -7.651875}
+    - hygId: 26246
+      hipId: 26311
+      properName: Alnilam
+      position: {x: 62.775124, y: 602.66693, z: -12.712683}
+    - hygId: 26246
+      hipId: 26311
+      properName: Alnilam
+      position: {x: 62.775124, y: 602.66693, z: -12.712683}
+    - hygId: 25865
+      hipId: 25930
+      properName: Mintaka
+      position: {x: 25.868116, y: 210.72966, z: -1.108306}
+    id: 006
+    name: The Sail of Tainui

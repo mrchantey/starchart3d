@@ -3,6 +3,11 @@
 This is a hobby project for creating a 3D starmap for Augmented Reality in the Unity Game Engine.
 The GitHub repo accompanies the YouTube series.
 
+The projects relies on the following databases:
+- [HYG Database](https://github.com/astronexus/HYG-Database) for star information
+- [Stellarium](https://github.com/Stellarium/stellarium) for constellation information
+
+
 To get the project in its state at any point in the series please refer to previous commits.
 
 ## Covered Material
