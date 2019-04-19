@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: da7f66707236c4ecc9c71f2f06e14c20
+timeCreated: 1518591566
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - rendererMaterial: {fileID: 2100000, guid: d6fd2a448925e4eeda58f84d101528d6, type: 2}
+  - constellationCatalog: {fileID: 11400000, guid: e4256706c5ae345fabfefa297e7d1bc3,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

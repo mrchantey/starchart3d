@@ -1,0 +1,2 @@
+J2000 Orbital Longitudes,http://www.met.rdg.ac.uk/~ross/Astronomy/Planets.html
+Planetary Information,http://www.data-explorer.com/data

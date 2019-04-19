@@ -1,0 +1,352 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4489eaa3845e344faa42ff38cd898e5c, type: 3}
+  m_Name: Planet Catalog
+  m_EditorClassIdentifier: 
+  path: Assets/Data/Solar System.csv
+  loadCatalog: 0
+  planets:
+  - name: Sun
+    id: 1
+    type: Star
+    orderFromSun: 0
+    diameterEarth: 109
+    diameterkm: 1392000
+    massEarth: 333000
+    avgDistFromSunAU: 0
+    orbitalPeriod: 0
+    orbitalEccentricity: 0
+    meanOrbitalVelocity: 0
+    rotationPeriodDays: 25.05
+    inclinationOfAxisDegrees: 7.25
+    meanTemperatureDegrees: 5600
+    earthGravityAtEquator: 28
+    escapeVelocityKmSec: 617.7
+    meanDensityWater: 1.4
+    atmosphericComposition: H2+He
+    numberOfMoons: 0
+    rings: 0
+    parent: 0
+    image: Images\Sun.jpg
+    url: http://en.wikipedia.org/wiki/Sun
+    J2000Longitude: 0
+  - name: Mercury
+    id: 2
+    type: Terrestrial planet
+    orderFromSun: 1
+    diameterEarth: 0.382
+    diameterkm: 4878
+    massEarth: 0.055
+    avgDistFromSunAU: 0.39
+    orbitalPeriod: 0.24
+    orbitalEccentricity: 0.2056
+    meanOrbitalVelocity: 47.89
+    rotationPeriodDays: 58.65
+    inclinationOfAxisDegrees: 0
+    meanTemperatureDegrees: 125
+    earthGravityAtEquator: 0.38
+    escapeVelocityKmSec: 4.25
+    meanDensityWater: 5.43
+    atmosphericComposition: none
+    numberOfMoons: 0
+    rings: 0
+    parent: 0
+    image: Images\Mercury.jpg
+    url: http://en.wikipedia.org/wiki/Mercury_(planet)
+    J2000Longitude: 252.25084
+  - name: Venus
+    id: 3
+    type: Terrestrial planet
+    orderFromSun: 2
+    diameterEarth: 0.949
+    diameterkm: 12104
+    massEarth: 0.815
+    avgDistFromSunAU: 0.72
+    orbitalPeriod: 0.62
+    orbitalEccentricity: 0.0068
+    meanOrbitalVelocity: 35.03
+    rotationPeriodDays: -243
+    inclinationOfAxisDegrees: 177.4
+    meanTemperatureDegrees: 465
+    earthGravityAtEquator: 0.9
+    escapeVelocityKmSec: 10.36
+    meanDensityWater: 5.25
+    atmosphericComposition: CO2
+    numberOfMoons: 0
+    rings: 0
+    parent: 0
+    image: Images\Venus.jpg
+    url: http://en.wikipedia.org/wiki/Venus
+    J2000Longitude: 181.97974
+  - name: Earth
+    id: 4
+    type: Terrestrial planet
+    orderFromSun: 3
+    diameterEarth: 1
+    diameterkm: 12756
+    massEarth: 1
+    avgDistFromSunAU: 1
+    orbitalPeriod: 1
+    orbitalEccentricity: 0.0167
+    meanOrbitalVelocity: 29.79
+    rotationPeriodDays: 1
+    inclinationOfAxisDegrees: 23.45
+    meanTemperatureDegrees: 15
+    earthGravityAtEquator: 1
+    escapeVelocityKmSec: 11.18
+    meanDensityWater: 5.52
+    atmosphericComposition: N2+O2
+    numberOfMoons: 1
+    rings: 0
+    parent: 0
+    image: Images\Earth.jpg
+    url: http://en.wikipedia.org/wiki/Earth
+    J2000Longitude: 100.46435
+  - name: Mars
+    id: 5
+    type: Terrestrial planet
+    orderFromSun: 4
+    diameterEarth: 0.532
+    diameterkm: 6787
+    massEarth: 0.107
+    avgDistFromSunAU: 1.52
+    orbitalPeriod: 1.88
+    orbitalEccentricity: 0.0934
+    meanOrbitalVelocity: 24.13
+    rotationPeriodDays: 1.03
+    inclinationOfAxisDegrees: 23.98
+    meanTemperatureDegrees: -53
+    earthGravityAtEquator: 0.38
+    escapeVelocityKmSec: 5.02
+    meanDensityWater: 3.93
+    atmosphericComposition: CO2
+    numberOfMoons: 2
+    rings: 0
+    parent: 0
+    image: Images\Mars.jpg
+    url: http://en.wikipedia.org/wiki/Mars
+    J2000Longitude: 355.4533
+  - name: Jupiter
+    id: 6
+    type: Gas giant
+    orderFromSun: 6
+    diameterEarth: 11.209
+    diameterkm: 142800
+    massEarth: 318
+    avgDistFromSunAU: 5.2
+    orbitalPeriod: 11.86
+    orbitalEccentricity: 0.0483
+    meanOrbitalVelocity: 13.06
+    rotationPeriodDays: 0.41
+    inclinationOfAxisDegrees: 3.08
+    meanTemperatureDegrees: -150
+    earthGravityAtEquator: 2.64
+    escapeVelocityKmSec: 59.54
+    meanDensityWater: 1.33
+    atmosphericComposition: H2+He
+    numberOfMoons: 63
+    rings: 1
+    parent: 0
+    image: Images\Jupiter.jpg
+    url: http://en.wikipedia.org/wiki/Jupiter
+    J2000Longitude: 34.40438
+  - name: Saturn
+    id: 7
+    type: Gas giant
+    orderFromSun: 7
+    diameterEarth: 9.44
+    diameterkm: 120000
+    massEarth: 95
+    avgDistFromSunAU: 9.54
+    orbitalPeriod: 29.46
+    orbitalEccentricity: 0.056
+    meanOrbitalVelocity: 9.64
+    rotationPeriodDays: 0.44
+    inclinationOfAxisDegrees: 26.73
+    meanTemperatureDegrees: -170
+    earthGravityAtEquator: 0.93
+    escapeVelocityKmSec: 35.49
+    meanDensityWater: 0.71
+    atmosphericComposition: H2+He
+    numberOfMoons: 62
+    rings: 1
+    parent: 0
+    image: Images\Saturn.jpg
+    url: http://en.wikipedia.org/wiki/Saturn
+    J2000Longitude: 49.94432
+  - name: Uranus
+    id: 8
+    type: Gas giant
+    orderFromSun: 8
+    diameterEarth: 4.007
+    diameterkm: 51118
+    massEarth: 15
+    avgDistFromSunAU: 19.18
+    orbitalPeriod: 84.01
+    orbitalEccentricity: 0.0461
+    meanOrbitalVelocity: 6.81
+    rotationPeriodDays: -0.72
+    inclinationOfAxisDegrees: 97.92
+    meanTemperatureDegrees: -200
+    earthGravityAtEquator: 0.89
+    escapeVelocityKmSec: 21.29
+    meanDensityWater: 1.24
+    atmosphericComposition: H2+He
+    numberOfMoons: 27
+    rings: 1
+    parent: 0
+    image: Images\Uranus.jpg
+    url: http://en.wikipedia.org/wiki/Uranus
+    J2000Longitude: 313.23218
+  - name: Neptune
+    id: 9
+    type: Gas giant
+    orderFromSun: 9
+    diameterEarth: 3.883
+    diameterkm: 49528
+    massEarth: 17
+    avgDistFromSunAU: 30.06
+    orbitalPeriod: 164.8
+    orbitalEccentricity: 0.0097
+    meanOrbitalVelocity: 5.43
+    rotationPeriodDays: 0.72
+    inclinationOfAxisDegrees: 28.8
+    meanTemperatureDegrees: -210
+    earthGravityAtEquator: 1.12
+    escapeVelocityKmSec: 23.71
+    meanDensityWater: 1.67
+    atmosphericComposition: H2+He
+    numberOfMoons: 13
+    rings: 1
+    parent: 0
+    image: Images\Neptune.jpg
+    url: http://en.wikipedia.org/wiki/Neptune
+    J2000Longitude: 304.88004
+  - name: Ceres
+    id: 10
+    type: Dwarf planet
+    orderFromSun: 5
+    diameterEarth: 0.076
+    diameterkm: 974.6
+    massEarth: 0.00016
+    avgDistFromSunAU: 2.76596
+    orbitalPeriod: 4.599
+    orbitalEccentricity: 0.07976
+    meanOrbitalVelocity: 17.882
+    rotationPeriodDays: 0.378
+    inclinationOfAxisDegrees: 3
+    meanTemperatureDegrees: -106
+    earthGravityAtEquator: 0.028
+    escapeVelocityKmSec: 0.51
+    meanDensityWater: 2.077
+    atmosphericComposition: none
+    numberOfMoons: 0
+    rings: 0
+    parent: 0
+    image: Images\Ceres.jpg
+    url: http://en.wikipedia.org/wiki/Ceres_(dwarf_planet)
+    J2000Longitude: 0
+  - name: Pluto
+    id: 11
+    type: Dwarf planet
+    orderFromSun: 10
+    diameterEarth: 0.18
+    diameterkm: 2300
+    massEarth: 0.002
+    avgDistFromSunAU: 39.44
+    orbitalPeriod: 247.7
+    orbitalEccentricity: 0.2482
+    meanOrbitalVelocity: 4.74
+    rotationPeriodDays: -6.38
+    inclinationOfAxisDegrees: 122
+    meanTemperatureDegrees: -220
+    earthGravityAtEquator: 0.06
+    escapeVelocityKmSec: 1.27
+    meanDensityWater: 2.03
+    atmosphericComposition: CH4
+    numberOfMoons: 3
+    rings: 0
+    parent: 0
+    image: Images\Pluto.jpg
+    url: http://en.wikipedia.org/wiki/Pluto
+    J2000Longitude: 238.9288
+  - name: Haumea
+    id: 12
+    type: Dwarf planet
+    orderFromSun: 11
+    diameterEarth: 0.11
+    diameterkm: 1300
+    massEarth: 0.0007
+    avgDistFromSunAU: 43.335
+    orbitalPeriod: 285.4
+    orbitalEccentricity: 0.18874
+    meanOrbitalVelocity: 4.484
+    rotationPeriodDays: 0.163
+    inclinationOfAxisDegrees: 0
+    meanTemperatureDegrees: -223
+    earthGravityAtEquator: 0.045
+    escapeVelocityKmSec: 0.84
+    meanDensityWater: 2.95
+    atmosphericComposition: none?
+    numberOfMoons: 2
+    rings: 0
+    parent: 0
+    image: Images\Haumea.jpg
+    url: http://en.wikipedia.org/wiki/Haumea_(dwarf_planet)
+    J2000Longitude: 0
+  - name: Makemake
+    id: 13
+    type: Dwarf planet
+    orderFromSun: 12
+    diameterEarth: 0.1255
+    diameterkm: 1420
+    massEarth: 0.00067
+    avgDistFromSunAU: 45.791
+    orbitalPeriod: 309.88
+    orbitalEccentricity: 0.159
+    meanOrbitalVelocity: 4.419
+    rotationPeriodDays: 0.32
+    inclinationOfAxisDegrees: 0
+    meanTemperatureDegrees: -240
+    earthGravityAtEquator: 0.051
+    escapeVelocityKmSec: 0.8
+    meanDensityWater: 2
+    atmosphericComposition: maybe CH4
+    numberOfMoons: 0
+    rings: 0
+    parent: 0
+    image: Images\Makemake.jpg
+    url: http://en.wikipedia.org/wiki/Makemake_(dwarf_planet)
+    J2000Longitude: 0
+  - name: Eris
+    id: 14
+    type: Dwarf planet
+    orderFromSun: 13
+    diameterEarth: 0.2115
+    diameterkm: 2326
+    massEarth: 0.0028
+    avgDistFromSunAU: 67.6681
+    orbitalPeriod: 557
+    orbitalEccentricity: 0.44177
+    meanOrbitalVelocity: 3.436
+    rotationPeriodDays: 1
+    inclinationOfAxisDegrees: 0
+    meanTemperatureDegrees: -230
+    earthGravityAtEquator: 0.082
+    escapeVelocityKmSec: 1.31
+    meanDensityWater: 1.745
+    atmosphericComposition: maybe CH4
+    numberOfMoons: 1
+    rings: 0
+    parent: 0
+    image: Images\Eris.jpg
+    url: http://en.wikipedia.org/wiki/Eris_(dwarf_planet)
+    J2000Longitude: 0
