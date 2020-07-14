@@ -111,6 +111,10 @@ function dateTo2000Offset(date) {
 
 // }
 
+if (require.main === module) {
+	console.log(y2000Millis);
+}
+
 
 const metersPerAU = 1.4959787e+11;
 const metersPerEarthRadii = 6378140.0;
