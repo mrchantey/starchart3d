@@ -1,4 +1,5 @@
 
+#if UNITY_EDITOR
 
 using UnityEditor;
 using UnityEngine;
@@ -29,3 +30,5 @@ namespace Starchart3D
 	}
 
 }
+
+#endif

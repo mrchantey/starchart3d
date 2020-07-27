@@ -7,6 +7,7 @@ namespace Starchart3D
 	{
 		public DoubleVariable day;
 
+		public bool renderBodies = true;
 
 		public AstrobodiesSO bodiesSO;
 
@@ -31,6 +32,10 @@ namespace Starchart3D
 		{
 
 			bodiesSO.value = new Astrobodies();
+
+			if (!renderBodies)
+				return;
+
 
 			bodiesSO.value.allBodies.ForEach(b =>
 			{

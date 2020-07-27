@@ -1,31 +1,14 @@
-# starchart3d
-
-This is a hobby project for creating a 3D starmap for Augmented Reality in the Unity Game Engine.
-The GitHub repo accompanies the YouTube series.
+# Starchart 3D
 
 The projects relies on the following databases:
 - [HYG Database](https://github.com/astronexus/HYG-Database) for star information
 - [Stellarium](https://github.com/Stellarium/stellarium) for constellation information
 
+## Dependencies
+- [Ahoy](https://github.com/mrchantey/ahoy.unity/raw/master/Package-Builds/Ahoy.unitypackage)
+- [Ahoy.Shaders](https://github.com/mrchantey/ahoy.unity/raw/master/Package-Builds/Ahoy.Shaders.unitypackage)
 
-To get the project in its state at any point in the series please refer to previous commits.
-
-## Covered Material
-
-- Unity
-    - Scriptable Objects
-    - Procedural Meshes
-    - Geometry Shaders
-    - Augmented Reality
-- C#
-    - File IO
-    - Abstract classes
-    - Linq Queries
-    - Arrow syntax
-
-## Sharing, Forking and Getting help
-
-Remember emails aren't great for answering questions because only two people can see them. YouTube comments also aren't ideal as they don't seem to show up in searches. Check out the below handy links for sharing and communication.
+## Links
 
 - [This Repository - GitHub](https://github.com/piratesjustar/starchart3d)
 - [Show And Tell - tweet #starchart3d](https://twitter.com/hashtag/starchart3d)
