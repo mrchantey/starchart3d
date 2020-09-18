@@ -1,4 +1,4 @@
-Shader "StarChart/Constellation"
+Shader "StarChart/Constellation - Simple"
 {
     Properties
     {
@@ -72,14 +72,21 @@ Shader "StarChart/Constellation"
                 float3 offUp0 = dirUp * screenScale0;
                 float3 offUp1 = dirUp * screenScale1;
 
+				if (_ProjectionParams.x < 0){
+					//flip for dx11, this should probably be in getscreenscale
+					//https://docs.unity3d.com/Manual/SL-PlatformDifferences.html
+					offUp0 *= -1;
+					offUp1 *= -1;
+				}
+
                 g2f OUT;
-                OUT.pos = Object2OffsetClipPos(IN[1].pos,-offUp1);
-                triStream.Append(OUT);
-                OUT.pos = Object2OffsetClipPos(IN[0].pos,-offUp0);
-                triStream.Append(OUT);
                 OUT.pos = Object2OffsetClipPos(IN[1].pos,offUp1);
                 triStream.Append(OUT);
                 OUT.pos = Object2OffsetClipPos(IN[0].pos,offUp0);
+                triStream.Append(OUT);
+                OUT.pos = Object2OffsetClipPos(IN[1].pos,-offUp1);
+                triStream.Append(OUT);
+                OUT.pos = Object2OffsetClipPos(IN[0].pos,-offUp0);
                 triStream.Append(OUT);
 
             }

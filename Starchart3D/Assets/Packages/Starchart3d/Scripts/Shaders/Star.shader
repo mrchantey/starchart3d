@@ -1,4 +1,4 @@
-Shader "StarChart/Star"
+Shader "StarChart/Star - Simple"
 {
   Properties{
  

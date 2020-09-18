@@ -4,9 +4,12 @@ namespace Starchart3D
 {
 
 	[Serializable]
+	//https://en.wikipedia.org/wiki/Celestial_coordinate_system#Equatorial_system
 	public struct EquatorialCoords
 	{
+		[Range(0, 24)]
 		public double rightAscention;//HOURS
+		[Range(-90, 90)]
 		public double declination;
 		public double radius;
 

@@ -31,6 +31,7 @@ namespace Starchart3D
 				return si;
 			})
 			.ToArray();
+			// Debug.Log($"StarDatabaseLoader - {stars[100].color}");
 		}
 
 

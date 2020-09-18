@@ -5,6 +5,7 @@ namespace Starchart3D
 
 
 	//http://www.zafzaf.it/coordinate/chapter7.htm
+	//https://en.wikipedia.org/wiki/Celestial_coordinate_system#Horizontal_system
 	[Serializable]
 	public struct HorizontalCoords
 	{
