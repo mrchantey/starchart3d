@@ -34,6 +34,11 @@ namespace Starchart3D
 			);
 		}
 
+		public double Length()
+		{
+			return Math.Sqrt(x * x + y * y + z * z);
+		}
+
 		public Vector3 ToVector3()
 		{
 			return new Vector3((float)x, (float)y, (float)z);
@@ -64,13 +69,17 @@ namespace Starchart3D
 		{
 			return new Vector3((float)-y, (float)z, (float)x);
 		}
+		public Vector3 EclipticCartToUnityVector3Untested()
+		{
+			return new Vector3((float)-y, (float)z, (float)x);
+		}
 
 		public EquatorialCoords ToEquatorialSpherical()
 		{
 			return new EquatorialCoords(
 				Math.Atan2(y, x) * StarMath.rad2hours,//HOURS
 				Math.Atan2(z, Math.Sqrt(x * x + y * y)) * StarMath.rad2deg,
-					Math.Sqrt(x * x + y * y + z * z));
+					this.Length());
 		}
 
 		public EclipticCoords ToEclipticSpherical()
@@ -78,26 +87,26 @@ namespace Starchart3D
 			var ecl = new EclipticCoords(
 					Math.Atan2(z, Math.Sqrt(x * x + y * y)) * StarMath.rad2deg,
 					Math.Atan2(y, x) * StarMath.rad2deg,
-				Math.Sqrt(x * x + y * y + z * z));
+				this.Length());
 			ecl.longitude = StarMath.WrapDeg(ecl.longitude);//nesecary?
 			return ecl;
 		}
 
-		public static CartesianCoords EclipticToEquatorialCartesian(CartesianCoords ecliptic, double obl_ecl)
+		public CartesianCoords EclipticToEquatorialCartesian(double obl_ecl)
 		{
 			return new CartesianCoords(
-			ecliptic.x,
-		 ecliptic.y * StarMath.Cos_d(obl_ecl) - ecliptic.z * StarMath.Sin_d(obl_ecl),
-		 ecliptic.y * StarMath.Sin_d(obl_ecl) + ecliptic.z * StarMath.Cos_d(obl_ecl)
+			x,
+			y * StarMath.Cos_d(obl_ecl) - z * StarMath.Sin_d(obl_ecl),
+			y * StarMath.Sin_d(obl_ecl) + z * StarMath.Cos_d(obl_ecl)
 			);
 		}
 
-		public static CartesianCoords EquatorialToEclipticCartesian(CartesianCoords equatorial, double obl_ecl)
+		public CartesianCoords EquatorialToEclipticCartesian(double obl_ecl)
 		{
 			return new CartesianCoords(
-			equatorial.x,
-				y: equatorial.y * StarMath.Cos_d(-obl_ecl) - equatorial.z * StarMath.Sin_d(-obl_ecl),
-				z: equatorial.y * StarMath.Sin_d(-obl_ecl) + equatorial.z * StarMath.Cos_d(-obl_ecl));
+			x,
+			y * StarMath.Cos_d(-obl_ecl) - z * StarMath.Sin_d(-obl_ecl),
+			y * StarMath.Sin_d(-obl_ecl) + z * StarMath.Cos_d(-obl_ecl));
 		}
 
 		public override string ToString()

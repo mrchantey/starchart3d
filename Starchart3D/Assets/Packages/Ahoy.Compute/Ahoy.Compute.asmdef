@@ -1,0 +1,16 @@
+{
+    "name": "Ahoy.Compute",
+    "references": [
+        "GUID:ff391ccdedb62ed4d855c3612c82578f",
+        "GUID:21d7705d5158da54985269a526e7a6c0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -7,6 +7,12 @@ namespace Starchart3D
 	public static class StarMath
 	{
 
+		public static Bounds CreateMaxBounds()
+		{
+			// return new Bounds(Vector3.zero, Vector3.one * float.MaxValue * 0.0001f);//this errors out
+			return new Bounds(Vector3.zero, Vector3.one * 100000);
+		}
+
 		public static readonly double deg2rad = Math.PI / 180;
 		public static readonly double rad2deg = 180 / Math.PI;
 		public static readonly double rad2hours = 12 / Math.PI;
@@ -14,6 +20,17 @@ namespace Starchart3D
 		public static readonly double deg2hours = (float)1 / 15;
 		public static readonly double hours2deg = 15;
 		public static readonly double earthTiltDeg = 23.4393;
+		public static readonly double obliquityConstant = 3.563E-7;
+		public static readonly double precessionConstant = 3.82394E-5;
+		public static readonly double siderealYear = 365.2422;
+		public static readonly double hoursToDays = 1.0 / 24.0;
+		public static readonly double minutesToDays = 1.0 / (24.0 * 60);
+		public static readonly double secondsToDays = 1.0 / (24.0 * 60 * 60);
+		public static readonly double tropicalYear = 365.242;//same as sidereal?
+
+		// public static readonly double siderealDay = 0.93447222222;
+		// public static readonly double siderealDay = 0.9972695;
+
 		public static double Sin_d(double v) { return Math.Sin(v * deg2rad); }
 		public static double Cos_d(double v) { return Math.Cos(v * deg2rad); }
 		public static double Tan_d(double v) { return Math.Tan(v * deg2rad); }
@@ -52,9 +69,14 @@ namespace Starchart3D
 
 		public static double ObliquityOfEcliptic(double day)
 		{
-			return earthTiltDeg - 3.563E-7 * day;//very slowly decreasing
+			return earthTiltDeg - obliquityConstant * day;//very slowly decreasing
 		}
 
+		public static double PrecessionEclipticLongitudeOffset(double day, double epoch = 2000)
+		{
+			//apparently subtract not add?
+			return -(precessionConstant * (siderealYear * (epoch - 2000.0) - day));
+		}
 
 		public static readonly int millisInDay = 1000 * 60 * 60 * 24;
 		//I THINK THIS SHOULD BE 1999, and not add one when get days from y20000 millis

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InvokeOnEnable: 0
   InvokeOnDisable: 0
+  debug: 1
   selectContents: 0
   assetPath: Assets/Packages/Starchart3d
   fileName: ../starchart3d

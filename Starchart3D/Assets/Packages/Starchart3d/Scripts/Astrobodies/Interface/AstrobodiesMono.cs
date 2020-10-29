@@ -50,6 +50,7 @@ namespace Starchart3D
 		void Update()
 		{
 			bodiesSO.value.UpdateBodies(day.value);
+			Shader.SetGlobalFloat("J2000Offset", (float)day.value / (float)StarMath.tropicalYear);
 		}
 
 	}

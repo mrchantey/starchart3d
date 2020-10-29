@@ -1,0 +1,1 @@
+lilbud findReplaceRecursive --depth 1 --find "<ReferenceOutputAssembly>false</ReferenceOutputAssembly>" --replace "<ReferenceOutputAssembly>true</ReferenceOutputAssembly>" --include ".csproj"

@@ -62,7 +62,7 @@ namespace Starchart3D
 			.ToArray();
 
 			mesh.SetIndices(indicies, MeshTopology.Points, 0);
-
+			mesh.bounds = StarMath.CreateMaxBounds();
 			return mesh;
 		}
 

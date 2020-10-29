@@ -42,6 +42,8 @@ namespace Starchart3D
 
 			mesh.SetIndices(indicies, MeshTopology.Lines, 0);
 
+			mesh.bounds = StarMath.CreateMaxBounds();
+
 			return mesh;
 		}
 

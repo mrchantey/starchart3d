@@ -2,7 +2,8 @@
     "name": "Starchart3d",
     "references": [
         "GUID:ff391ccdedb62ed4d855c3612c82578f",
-        "GUID:21d7705d5158da54985269a526e7a6c0"
+        "GUID:21d7705d5158da54985269a526e7a6c0",
+        "GUID:d1edfc6461bbd894ea71f7c5372a2062"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

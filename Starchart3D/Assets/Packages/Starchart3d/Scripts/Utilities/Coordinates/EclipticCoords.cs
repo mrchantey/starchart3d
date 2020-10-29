@@ -10,11 +10,6 @@ namespace Starchart3D
 		Horizontal
 	}
 
-	public enum CelestialCoordinatesType
-	{
-		Equatorial,
-		Horizontal
-	}
 
 	[Serializable]
 	public struct EclipticCoords
@@ -24,7 +19,20 @@ namespace Starchart3D
 		public double latitude;
 		[Range(-180, 180)]
 		public double longitude;
-		public EclipticCoords(double latitude, double longitude, double radius)
+
+
+		public static EclipticCoords FromQuaternionUntested(Quaternion rotation, double radius = 1)
+		{
+			var euler = rotation.eulerAngles;
+			var ecl = new EclipticCoords(0, 0);
+			ecl.latitude = euler.x;
+			ecl.longitude = euler.y;
+			ecl.radius = radius;
+			return ecl;
+		}
+
+
+		public EclipticCoords(double latitude, double longitude, double radius = 1)
 		{
 			this.latitude = latitude;
 			this.longitude = longitude;
@@ -38,6 +46,23 @@ namespace Starchart3D
 				radius * StarMath.Cos_d(longitude) * StarMath.Cos_d(latitude),
 				radius * StarMath.Sin_d(longitude) * StarMath.Cos_d(latitude),
 				radius * StarMath.Sin_d(latitude)
+			);
+		}
+
+		public EquatorialCoords ToEquatorial(double obl_ecl)
+		{
+			return this
+			.ToCartesian()
+			.EclipticToEquatorialCartesian(obl_ecl)
+			.ToEquatorialSpherical();
+		}
+
+		public EclipticCoords ToCorrectedPrecession(double day)
+		{
+			return new EclipticCoords(
+				this.latitude,
+				this.longitude + StarMath.PrecessionEclipticLongitudeOffset(day),
+				this.radius
 			);
 		}
 

@@ -18,5 +18,6 @@ MonoBehaviour:
   paths:
   - ../../ahoy.unity/Package-Builds/Ahoy
   - ../../ahoy.unity/Package-Builds/Ahoy.Shaders
+  - ../../ahoy.unity/Package-Builds/Ahoy.Compute
   debug: 0
   purgePackagePaths: 0

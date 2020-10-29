@@ -1,0 +1,35 @@
+#pragma kernel CSMain
+
+StructuredBuffer<float3> positions;
+StructuredBuffer<int> indices;
+RWStructuredBuffer<float4> vertices;
+#include "./utility.cginc"
+
+[numthreads(8, 8, 8)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+	int i = GetThreadIndex(id);
+	if(i == -1)	return;
+
+	int pi0 = i;
+	int pi1 = pi0 + 1;
+	
+	float4 posView0 = mul(Ahoy_MV,float4(positions[pi0],1));
+	float4 posView1 = mul(Ahoy_MV,float4(positions[pi1],1));
+
+
+	float3 dirRight = posView1.xyz - posView0.xyz;
+	float3 dirUp = normalize(cross(float3(0,0,1),dirRight));
+
+	float _Size = 0.1;
+	float3 posOff0 = posView1 + dirUp * _Size;
+	float3 posOff1 = posView1 - dirUp * _Size;
+	float3 posOff2 = posView0 - dirUp * _Size;
+	float3 posOff3 = posView0 + dirUp * _Size;
+
+	int vi = i * 4;
+	vertices[vi] = mul(Ahoy_P,float4(posOff0,1));
+	vertices[vi+1] = mul(Ahoy_P,float4(posOff1,1));
+	vertices[vi+2] = mul(Ahoy_P,float4(posOff2,1));
+	vertices[vi+3] = mul(Ahoy_P,float4(posOff3,1));
+}

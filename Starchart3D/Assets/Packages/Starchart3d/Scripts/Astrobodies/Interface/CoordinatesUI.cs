@@ -8,31 +8,36 @@ namespace Starchart3D
 	public class CoordinatesUI : MonoBehaviour
 	{
 		public bool debug = true;
+		public CelestialOrigin celestialOrigin;
 
 		public Text text;
-		public CelestialCoordinatesType coordsType;
+		public CelestialCoordinateType coordsType;
 
-		public QuaternionVariable equatorialRotation;
-		public QuaternionVariable horizontalRotation;
+		public QuaternionVariable equatorialOrigin;
+		public QuaternionVariable cameraRotation;
 
 		void Update()
 		{
+			if (celestialOrigin.coordinateType != CelestialCoordinateType.Horizontal)
+			{
+				text.text = "";
+				return;
+			}
 			switch (coordsType)
 			{
-				case CelestialCoordinatesType.Horizontal:
-					text.text = $"";
-					var horiz = new HorizontalCoords(horizontalRotation.value);
+				case CelestialCoordinateType.Horizontal:
+				default:
+					var horiz = new HorizontalCoords(cameraRotation.value);
 					text.text = $"Az: {horiz.azimuth.ToString("0.0")}\nAlt: {horiz.altitude.ToString("0.0")}";
 					break;
-				case CelestialCoordinatesType.Equatorial:
-					// var localEquatorialRotation = Quaternion.Inverse(equatorialRotation.value) * horizontalRotation.value;
-					// var equ = new EquatorialCoords(localEquatorialRotation);
-					var rot = Quaternion.Inverse(equatorialRotation.value) * horizontalRotation.value;
-					// var rot = equatorialRotation.value * horizontalRotation.value;
+				case CelestialCoordinateType.Equatorial:
+					var rot = Quaternion.Inverse(equatorialOrigin.value) * cameraRotation.value;
 					var equ = new EquatorialCoords(rot);
-
-					// var equ = new EquatorialCoords(equatorialRotation.value);
 					text.text = $"RA: {equ.rightAscention.ToString("0.0")}\nDec: {(equ.declination).ToString("0.0")}";
+					break;
+				case CelestialCoordinateType.Ecliptic:
+					var ecl = EclipticCoords.FromQuaternionUntested(cameraRotation.value);
+					text.text = $"Lon: {ecl.longitude.ToString("0.0")}\nLat: {ecl.latitude.ToString("0.0")}";
 					break;
 			}
 		}

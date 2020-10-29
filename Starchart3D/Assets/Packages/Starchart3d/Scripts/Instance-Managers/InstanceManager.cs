@@ -32,6 +32,7 @@ namespace Starchart3D
 
 		public void GenerateAndInstantiatePrefab()
 		{
+
 			starDatabaseLoader.LoadDatabase();
 			//constellation database must load after star database
 			constellationDatabaseLoader.LoadDatabase();
@@ -49,8 +50,7 @@ namespace Starchart3D
 			InstantiatePrefab();
 		}
 
-
-		public void InstantiatePrefab()
+		void PurgeInstances()
 		{
 			if (starsInstance != null)
 				GameObject.DestroyImmediate(starsInstance);
@@ -58,7 +58,12 @@ namespace Starchart3D
 				GameObject.DestroyImmediate(constellationsInstance);
 			if (constellationOverlayInstance != null)
 				GameObject.DestroyImmediate(constellationOverlayInstance);
+		}
 
+
+		public void InstantiatePrefab()
+		{
+			PurgeInstances();
 			var starPrefab = AssetUtility.GetAssetsAtPath<GameObject>(starPrefabGenerator.folderPath)[0];
 			starsInstance = GameObject.Instantiate(starPrefab, Vector3.zero, Quaternion.identity, transform);
 

@@ -35,9 +35,8 @@ namespace Starchart3D
 			bodies.allBodies.ForEach(b =>
 			{
 				b.ecliptic = b.eclipticCartHelio.ToEclipticSpherical();
-				b.equatorialCartGeo = CartesianCoords.EclipticToEquatorialCartesian(b.eclipticCartGeo, obl_ecl);
+				b.equatorialCartGeo = b.eclipticCartGeo.EclipticToEquatorialCartesian(obl_ecl);
 				b.equatorial = b.equatorialCartGeo.ToEquatorialSpherical();
-
 			});
 		}
 	}
