@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a67536fe1cc2dc4781a33d358c25b23, type: 3}
+  m_Name: PackageImporter - All
+  m_EditorClassIdentifier: 
+  InvokeOnEnable: 0
+  InvokeOnDisable: 0
+  selectContents: 0
+  paths:
+  - ../ahoy.unity/Package-Builds/Ahoy
+  - ../ahoy.unity/Package-Builds/Ahoy.Entities
+  - ../ahoy.unity/Package-Builds/Ahoy.Net
+  - ../ahoy.unity/Package-Builds/Ahoy.Navigation
+  debug: 0
+  purgePackagePaths: 0

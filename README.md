@@ -8,6 +8,10 @@ The projects relies on the following databases:
 - [Ahoy](https://github.com/mrchantey/ahoy.unity/raw/master/Package-Builds/Ahoy.unitypackage)
 - [Ahoy.Shaders](https://github.com/mrchantey/ahoy.unity/raw/master/Package-Builds/Ahoy.Shaders.unitypackage)
 
+## Known Issues
+
+- Constellation and star meshes cause unity log errors, probably because of max size bounding boxes
+
 ## Links
 
 - [This Repository - GitHub](https://github.com/piratesjustar/starchart3d)
@@ -15,3 +19,5 @@ The projects relies on the following databases:
 - [C# and programming questions - Stack Overflow](https://stackoverflow.com/)
 - [Unity specific questions - Unity Answers](https://answers.unity.com/)
 - [Project discussion - Unity Forums](https://forum.unity.com/forums/general-discussion.14/)
+
+- [Tutorial about star positions](http://www.stjarnhimlen.se/comp/tutorial.html)
