@@ -2,8 +2,8 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-/[Aa]ssets/[Pp]ackages/Ahoy
-/[Aa]ssets/[Pp]ackages/Ahoy.Shaders
+# /[Aa]ssets/[Pp]ackages/Ahoy
+# /[Aa]ssets/[Pp]ackages/Ahoy.Shaders
 
 
 /[Ll]ibrary/
