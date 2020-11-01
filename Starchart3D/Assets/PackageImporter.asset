@@ -19,5 +19,5 @@ MonoBehaviour:
   - ../../ahoy.unity/Package-Builds/Ahoy
   - ../../ahoy.unity/Package-Builds/Ahoy.Shaders
   - ../../ahoy.unity/Package-Builds/Ahoy.Compute
-  debug: 0
-  purgePackagePaths: 1
+  debug: 1
+  purgePackagePaths: 0

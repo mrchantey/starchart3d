@@ -2,13 +2,22 @@ Shader "Ahoy.Compute/Simple Compute"
 {
 Properties{ 
     _Color ("Color",Color) = (1,1,1,1)
+	[Header(Blending)][Space(10)]
+	[Enum (UnityEngine.Rendering.BlendMode)] _BlendSource("Blend Source",Float) =  5		//srcAlpha
+	[Enum (UnityEngine.Rendering.BlendMode)] _BlendDestin("Blend Destination",Float) =  10	//OneMinusSrcAlpha
+
+	[Header(Culling)][Space(10)]
+	[Enum(Off,0,On,1)]_ZWrite ("ZWrite", Float) = 0
+	[Enum(UnityEngine.Rendering.CompareFunction)] _ZTest("ZTest", Float) = 4 				//LessEqual
+	[Enum(UnityEngine.Rendering.CullMode)] _Cull ("Cull", Float) = 0
 }
   SubShader{
-	Tags {"Queue"="Transparent" "RenderType"="Transparent"}
-    Blend SrcAlpha OneMinusSrcAlpha
-    ZWrite Off
-	ZTest Always
-	Cull Off
+    Tags { "Queue"="Transparent" "RenderType"="Transparent"}
+    Blend [_BlendSource] [_BlendDestin]
+    ZWrite [_ZWrite]
+    ZTest [_ZTest]
+    Cull [_Cull]
+
 
     Pass
     {

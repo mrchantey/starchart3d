@@ -3,28 +3,35 @@ using UnityEngine;
 namespace Ahoy.Compute
 {
 
-	[RequireComponent(typeof(ComputeInstance), typeof(MaterialInstance))]
-	public abstract class ComputeRenderer : InvocableMono
+
+	public abstract class ComputeRendererBase : InvocableMono
 	{
-		// public bool debug = true;
-		public PositionData positionData;
+
 		[HideInInspector]
 		public ComputeInstance computeInstance;
 		[HideInInspector]
 		public MaterialInstance materialInstance;
+
+	}
+
+	public abstract class PositionComputeRenderer : ComputeRenderer<PositionData> { }
+
+
+	[RequireComponent(typeof(ComputeInstance), typeof(MaterialInstance))]
+	public abstract class ComputeRenderer<dataT> : ComputeRendererBase where dataT : PositionData
+	{
+		public dataT shaderData;
 
 		ComputeBuffer positionsBuffer;
 		ComputeBuffer verticesBuffer;
 		ComputeBuffer indicesBuffer;
 		GraphicsBuffer indicesBufferGraphics;
 
-		protected virtual Vector3[] GetPositions() { return positionData.GetPositions(); }
+		protected virtual Vector3[] GetPositions() { return shaderData.GetPositions(); }
 		protected abstract int[] GetIndices();
 		protected abstract int numVerts { get; }
 		protected abstract int numThreads { get; }
-		protected int numPositions { get { return positionData.numPositions; } }
-
-		protected virtual void OnInit() { }
+		protected int numPositions { get { return shaderData.numPositions; } }
 
 		void OnEnable()
 		{
@@ -64,7 +71,6 @@ namespace Ahoy.Compute
 
 			materialInstance.Init(verticesBuffer, indicesBufferGraphics);
 
-			OnInit();
 
 		}
 
@@ -95,7 +101,6 @@ namespace Ahoy.Compute
 				indicesBuffer.Dispose();
 			if (indicesBufferGraphics != null)
 				indicesBufferGraphics.Dispose();
-
 		}
 
 		void OnDestroy() { Cleanup(); }

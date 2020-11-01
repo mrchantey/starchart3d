@@ -1,10 +1,8 @@
 using UnityEngine;
-using System.Linq;
 using Ahoy;
 
 namespace Starchart3D
 {
-
 	[System.Serializable]
 	public class StarInfo
 	{

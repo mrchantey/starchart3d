@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
+using Ahoy.Shaders;
 
 namespace Ahoy
 {
@@ -16,6 +18,14 @@ namespace Ahoy
 		[HideInInspector]
 		public Bounds bounds = BoundsExtensions.MaxBounds;
 
+		public bool applyShaderPropertiesOnDispatch = true;
+		public ShaderPropertiesBase shaderProperties;
+
+		public ShadowCastingMode castShadows = ShadowCastingMode.Off;
+		public bool receiveShadows = false;
+		public int layer = 1;
+
+
 		GraphicsBuffer indexBufferRef;
 
 		public void Init(ComputeBuffer verticesBuffer, GraphicsBuffer indexBuffer)
@@ -23,17 +33,28 @@ namespace Ahoy
 			material = new Material(materialTemplate);
 			var numVerts = verticesBuffer.count;
 			material.SetBuffer("vertices", verticesBuffer);
+			if (shaderProperties != null)
+				shaderProperties.Apply(material);
 			indexBufferRef = indexBuffer;
 		}
 
-		public void Render()
+		public void Render(Camera camera = null)
 		{
+			if (shaderProperties != null & applyShaderPropertiesOnDispatch)
+				shaderProperties.Apply(material);
+
 			Graphics.DrawProcedural(
 								material,
 								bounds,
 								MeshTopology.Triangles,
 								indexBufferRef,
-								indexBufferRef.count
+								indexBufferRef.count,
+								1,
+								camera,
+								null,
+								castShadows,
+								receiveShadows,
+								layer
 								);
 		}
 

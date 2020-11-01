@@ -10,7 +10,7 @@ namespace Ahoy.Compute
 
 		public new Camera camera;
 
-		public List<ComputeRenderer> ComputeRenderers;
+		public List<ComputeRendererBase> computeRenderers;
 
 		UnityEngine.Matrix4x4 V, P, VP;
 
@@ -33,7 +33,7 @@ namespace Ahoy.Compute
 			}
 		}
 
-		void HandleMatrices(ComputeRenderer[] renderers)
+		void HandleMatrices(ComputeRendererBase[] renderers)
 		{
 			MatrixUtility.CalculateViewProjectionMatrices(camera, out V, out P, out VP);
 			Shader.SetGlobalMatrix("Ahoy_V", V);
@@ -64,7 +64,7 @@ namespace Ahoy.Compute
 
 		void Update()
 		{
-			var renderers = ComputeRenderers
+			var renderers = computeRenderers
 			.Where(i =>
 				i.gameObject.activeInHierarchy &&
 				i.computeInstance != null &&
@@ -76,7 +76,7 @@ namespace Ahoy.Compute
 			renderers.ForEach(m =>
 			{
 				m.computeInstance.Dispatch();
-				m.materialInstance.Render();
+				m.materialInstance.Render(camera);
 			});
 		}
 

@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Ahoy.Compute
 {
 
-	public class BillboardComputeRenderer : ComputeRenderer
+	public class BillboardComputeRenderer : PositionComputeRenderer
 	{
 
 		protected override int numVerts { get { return numPositions * 4; } }

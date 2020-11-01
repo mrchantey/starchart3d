@@ -1,8 +1,5 @@
 #pragma kernel CSMain
 
-StructuredBuffer<float3> positions;
-StructuredBuffer<int> indices;
-RWStructuredBuffer<float4> vertices;
 #include "./utility.cginc"
 
 

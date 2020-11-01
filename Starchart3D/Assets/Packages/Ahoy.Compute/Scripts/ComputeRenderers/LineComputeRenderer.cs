@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Ahoy.Compute
 {
 
-	public class LineComputeRenderer : ComputeRenderer
+	public class LineComputeRenderer : PositionComputeRenderer
 	{
 
 

@@ -1,8 +1,5 @@
 #pragma kernel CSMain
 
-StructuredBuffer<float3> positions;
-StructuredBuffer<int> indices;
-RWStructuredBuffer<float4> vertices;
 #include "./utility.cginc"
 
 [numthreads(8, 8, 8)]
@@ -13,17 +10,5 @@ void CSMain(uint3 id : SV_DispatchThreadID)
 
 	int pi = i;
 	int vi = i * 4;
-
-	float4 posView = mul(Ahoy_MV,float4(positions[pi],1));
-	float _Size = 0.1;
-
-	float3 posOff0 = posView + float3(1, 1, 0)  * _Size;
-	float3 posOff1 = posView + float3(1, -1, 0) * _Size;
-	float3 posOff2 = posView + float3(-1, -1, 0) * _Size;
-	float3 posOff3 = posView + float3(-1, 1, 0) * _Size;
-
-	vertices[vi] = mul(Ahoy_P,float4(posOff0,1));
-	vertices[vi+1] = mul(Ahoy_P,float4(posOff1,1));
-	vertices[vi+2] = mul(Ahoy_P,float4(posOff2,1));
-	vertices[vi+3] = mul(Ahoy_P,float4(posOff3,1));
+	PointsToQuad(positions[pi],vi);
 }

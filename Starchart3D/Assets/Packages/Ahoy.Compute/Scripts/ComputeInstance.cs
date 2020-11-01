@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Ahoy.Shaders;
 
 namespace Ahoy.Compute
 {
@@ -14,6 +15,10 @@ namespace Ahoy.Compute
 		public ComputeShader computeShader;
 
 		Vector3Int numGroups;
+
+
+		public bool applyShaderPropertiesOnDispatch = true;
+		public ShaderPropertiesBase shaderProperties;
 
 		public int kernelIndex { get; private set; }
 
@@ -51,6 +56,8 @@ namespace Ahoy.Compute
 			computeShader.SetInt("Ahoy_NumThreadsY", numThreadsY);
 			computeShader.SetInt("Ahoy_NumThreadsZ", numThreadsZ);
 
+			if (shaderProperties != null)
+				shaderProperties.Apply(computeShader, kernelIndex);
 			base_isInitialized = true;
 		}
 
@@ -68,7 +75,11 @@ namespace Ahoy.Compute
 			if (!base_isInitialized)
 				Debug.LogWarning($"ComputeInstance - not initialized");
 			else
+			{
+				if (shaderProperties != null & applyShaderPropertiesOnDispatch)
+					shaderProperties.Apply(computeShader, kernelIndex);
 				computeShader.Dispatch(kernelIndex, numGroups.x, numGroups.y, numGroups.z);
+			}
 		}
 
 

@@ -180,11 +180,9 @@ MonoBehaviour:
     InvokeEveryInterval: 0
     InvokeEveryIntervalFixed: 0
     interval: 5
-  positionData: {fileID: 11400000, guid: 99f431104de35794ea2d46fc6b0a329d, type: 2}
   computeInstance: {fileID: 0}
   materialInstance: {fileID: 0}
-  indexedPositionData: {fileID: 11400000, guid: 99f431104de35794ea2d46fc6b0a329d,
-    type: 2}
+  shaderData: {fileID: 11400000, guid: 99f431104de35794ea2d46fc6b0a329d, type: 2}
 --- !u!114 &355600546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +200,13 @@ MonoBehaviour:
   bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 50000, y: 50000, z: 50000}
+  applyShaderPropertiesOnDispatch: 1
+  shaderProperties: {fileID: 0}
+  castShadows: 0
+  receiveShadows: 0
+  layer:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!114 &355600547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,6 +221,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   computeTemplate: {fileID: 7200000, guid: 2323c4dd09aee9e4ba1a9d2c39cb8729, type: 3}
   computeShader: {fileID: 0}
+  applyShaderPropertiesOnDispatch: 1
+  shaderProperties: {fileID: 0}
+--- !u!1 &449353749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 449353750}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &449353750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449353749}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.1020308, y: 1.3255949, z: -2.4677992}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1071199711
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,9 +296,9 @@ MonoBehaviour:
     InvokeEveryInterval: 0
     InvokeEveryIntervalFixed: 0
     interval: 4
-  positionData: {fileID: 11400000, guid: 99f431104de35794ea2d46fc6b0a329d, type: 2}
   computeInstance: {fileID: 0}
   materialInstance: {fileID: 0}
+  shaderData: {fileID: 11400000, guid: 99f431104de35794ea2d46fc6b0a329d, type: 2}
 --- !u!4 &1071199713
 Transform:
   m_ObjectHideFlags: 0
@@ -270,7 +307,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071199711}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -293,6 +330,13 @@ MonoBehaviour:
   bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 50000, y: 50000, z: 50000}
+  applyShaderPropertiesOnDispatch: 1
+  shaderProperties: {fileID: 0}
+  castShadows: 0
+  receiveShadows: 0
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1071199715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,6 +351,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   computeTemplate: {fileID: 7200000, guid: 6ef4297cd1b5dfd4ca5c9d95e3035286, type: 3}
   computeShader: {fileID: 0}
+  applyShaderPropertiesOnDispatch: 1
+  shaderProperties: {fileID: 11400000, guid: c352ce48439f77b4a8be96701c86d4ab, type: 2}
 --- !u!1 &1350309544
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1350309545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,9 +396,9 @@ MonoBehaviour:
     InvokeEveryInterval: 0
     InvokeEveryIntervalFixed: 0
     interval: 5
-  positionData: {fileID: 11400000, guid: 99f431104de35794ea2d46fc6b0a329d, type: 2}
   computeInstance: {fileID: 0}
   materialInstance: {fileID: 0}
+  shaderData: {fileID: 11400000, guid: 99f431104de35794ea2d46fc6b0a329d, type: 2}
 --- !u!114 &1350309546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +416,13 @@ MonoBehaviour:
   bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 50000, y: 50000, z: 50000}
+  applyShaderPropertiesOnDispatch: 1
+  shaderProperties: {fileID: 0}
+  castShadows: 0
+  receiveShadows: 0
+  layer:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!114 &1350309547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,6 +437,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   computeTemplate: {fileID: 7200000, guid: 823c309b71869364f8417e2797ad6b76, type: 3}
   computeShader: {fileID: 0}
+  applyShaderPropertiesOnDispatch: 1
+  shaderProperties: {fileID: 11400000, guid: c352ce48439f77b4a8be96701c86d4ab, type: 2}
 --- !u!4 &1350309548
 Transform:
   m_ObjectHideFlags: 0
@@ -391,13 +446,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350309544}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.5, y: 1.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1501751575
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,7 +471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1501751576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,9 +496,9 @@ MonoBehaviour:
     InvokeEveryInterval: 0
     InvokeEveryIntervalFixed: 0
     interval: 5
-  positionData: {fileID: 11400000, guid: 1be14f95ba96f9c4dbf43de2cd88f3b2, type: 2}
   computeInstance: {fileID: 0}
   materialInstance: {fileID: 0}
+  shaderData: {fileID: 11400000, guid: 99f431104de35794ea2d46fc6b0a329d, type: 2}
 --- !u!114 &1501751577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,6 +516,13 @@ MonoBehaviour:
   bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 50000, y: 50000, z: 50000}
+  applyShaderPropertiesOnDispatch: 1
+  shaderProperties: {fileID: 0}
+  castShadows: 0
+  receiveShadows: 0
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1501751578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,6 +537,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   computeTemplate: {fileID: 7200000, guid: b64f218a13b56a64897043c1b569007b, type: 3}
   computeShader: {fileID: 0}
+  applyShaderPropertiesOnDispatch: 1
+  shaderProperties: {fileID: 11400000, guid: c352ce48439f77b4a8be96701c86d4ab, type: 2}
 --- !u!4 &1501751579
 Transform:
   m_ObjectHideFlags: 0
@@ -611,7 +675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 1968651358}
-  ComputeRenderers:
+  computeRenderers:
   - {fileID: 1071199712}
   - {fileID: 355600545}
   - {fileID: 1350309545}
@@ -680,7 +744,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -708,7 +772,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968651356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalPosition: {x: 0, y: -1, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

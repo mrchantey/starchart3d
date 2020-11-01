@@ -1,0 +1,19 @@
+#pragma kernel CSMain
+
+#include "./starUtility.cginc"
+
+[numthreads(8, 8, 8)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+	int i = GetThreadIndex(id);
+	if(i == -1)	return;
+
+	int pi0 = i*2;
+	int pi1 = pi0 + 1;
+	int vi = i * 4;
+
+	float3 pos0 = GetStarPosition(pi0);
+	float3 pos1 = GetStarPosition(pi1);
+
+	PointsToLine(pos0,pos1,vi);
+}

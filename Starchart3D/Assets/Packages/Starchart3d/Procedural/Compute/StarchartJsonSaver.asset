@@ -18,4 +18,4 @@ MonoBehaviour:
   starDatabase: {fileID: 11400000, guid: 1a1f026c02153714ea082e8a32dc228a, type: 2}
   constellationDatabase: {fileID: 11400000, guid: 21396daaae388ac4fab1d9caec277b98,
     type: 2}
-  repopulateDatabases: 0
+  repopulateDatabases: 1

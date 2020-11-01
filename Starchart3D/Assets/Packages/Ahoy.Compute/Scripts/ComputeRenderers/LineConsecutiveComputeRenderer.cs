@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Ahoy.Compute
 {
 
-	public class LineConsecutiveComputeRenderer : ComputeRenderer
+	public class LineConsecutiveComputeRenderer : PositionComputeRenderer
 	{
 
 		//TODO FIX THIS DANG THING
