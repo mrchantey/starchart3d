@@ -16,4 +16,5 @@ void CSMain(uint3 id : SV_DispatchThreadID)
 	float3 pos1 = GetStarPosition(pi1);
 
 	PointsToLine(pos0,pos1,vi);
+	// vertices[vi] = float4(pi0,vi,0,0);
 }

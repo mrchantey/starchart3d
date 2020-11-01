@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Ahoy.Compute
 {
-
+	[ExecuteAlways]
 	public class ComputeRenderDispatcher : MonoBehaviour
 	{
 
@@ -16,10 +17,37 @@ namespace Ahoy.Compute
 
 		Vector4 screenParams;
 
-		void Start()
+		void OnEnable()
 		{
-
+			RenderPipelineManager.beginFrameRendering += OnPreRenderURP;
 		}
+
+		void OnDisable()
+		{
+			RenderPipelineManager.beginFrameRendering -= OnPreRenderURP;
+		}
+
+		void OnPreRenderURP(ScriptableRenderContext context, Camera[] cameras)
+		{
+			Render();
+		}
+
+		void Render()
+		{
+			// Debug.Log($"ComputeRenderDispatcher - {Time.frameCount}");
+			var renderers = computeRenderers
+			.Where(i =>
+				i.gameObject.activeInHierarchy &&
+				i.isInitialized
+				)
+			.ToArray();
+			HandleTime();
+			HandleMatrices(renderers);
+			HandleScreenParams();
+			renderers.ForEach(m => m.Render(camera));
+		}
+
+		// UnityEngine.Rendering.
 
 		void HandleScreenParams()
 		{
@@ -62,23 +90,14 @@ namespace Ahoy.Compute
 			Shader.SetGlobalFloat("Ahoy_Time", Time.time);
 		}
 
-		void Update()
-		{
-			var renderers = computeRenderers
-			.Where(i =>
-				i.gameObject.activeInHierarchy &&
-				i.computeInstance != null &&
-				i.computeInstance.base_isInitialized)
-			.ToArray();
-			HandleTime();
-			HandleMatrices(renderers);
-			HandleScreenParams();
-			renderers.ForEach(m =>
-			{
-				m.computeInstance.Dispatch();
-				m.materialInstance.Render(camera);
-			});
-		}
+		// void Update()
+		// {
+		// 	DispatchAndRender();
+		// }
+
+
+
+
 
 	}
 }

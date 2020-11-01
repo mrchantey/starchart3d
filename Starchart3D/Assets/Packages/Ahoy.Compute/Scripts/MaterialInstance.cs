@@ -19,27 +19,32 @@ namespace Ahoy
 		public Bounds bounds = BoundsExtensions.MaxBounds;
 
 		public bool applyShaderPropertiesOnDispatch = true;
+		public bool instantiateTemplate = true;
 		public ShaderPropertiesBase shaderProperties;
 
 		public ShadowCastingMode castShadows = ShadowCastingMode.Off;
 		public bool receiveShadows = false;
 		public int layer = 1;
 
+		public bool isInitialized { get; private set; }
+
 
 		GraphicsBuffer indexBufferRef;
 
 		public void Init(ComputeBuffer verticesBuffer, GraphicsBuffer indexBuffer)
 		{
-			material = new Material(materialTemplate);
+			material = instantiateTemplate ? new Material(materialTemplate) : materialTemplate;
 			var numVerts = verticesBuffer.count;
 			material.SetBuffer("vertices", verticesBuffer);
 			if (shaderProperties != null)
 				shaderProperties.Apply(material);
 			indexBufferRef = indexBuffer;
+			isInitialized = true;
 		}
 
 		public void Render(Camera camera = null)
 		{
+
 			if (shaderProperties != null & applyShaderPropertiesOnDispatch)
 				shaderProperties.Apply(material);
 
@@ -57,6 +62,8 @@ namespace Ahoy
 								layer
 								);
 		}
+
+
 
 		public void SetBounds(Bounds bounds) { this.bounds = bounds; }
 		public void SetMaterial(Material material) { this.material = material; }

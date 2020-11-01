@@ -3,14 +3,16 @@ using UnityEngine;
 namespace Ahoy.Compute
 {
 
-
-	public abstract class ComputeRendererBase : InvocableMono
+	[ExecuteAlways]
+	public abstract class ComputeRendererBase : MonoBehaviour
 	{
 
 		[HideInInspector]
 		public ComputeInstance computeInstance;
 		[HideInInspector]
 		public MaterialInstance materialInstance;
+		public bool isInitialized { get; protected set; }
+		public abstract void Render(Camera camera);
 
 	}
 
@@ -35,15 +37,20 @@ namespace Ahoy.Compute
 
 		void OnEnable()
 		{
+			// Debug.Log($"ComputeRenderer - bang");
 			computeInstance = GetComponent<ComputeInstance>();
 			materialInstance = GetComponent<MaterialInstance>();
+			Init();
 		}
 
-		public override void Invoke()
+		void OnDisable()
 		{
-
 			Cleanup();
+		}
 
+		public virtual void Init()
+		{
+			Cleanup();
 			var positions = GetPositions();
 			var numPositions = positions.Length;
 			positionsBuffer = new ComputeBuffer(numPositions, Vector3Extensions.stride);
@@ -70,8 +77,18 @@ namespace Ahoy.Compute
 			// Debug.Log($"ComputeRenderer - data:\nThreads:\t{numThreads}\nPositions:\t{numPositions}\nIndices:   \t{numIndices}\nVertices:\t{numVertices}");
 
 			materialInstance.Init(verticesBuffer, indicesBufferGraphics);
+			isInitialized = true;
+		}
 
-
+		public override void Render(Camera camera)
+		{
+			if (!isInitialized)
+			{
+				Debug.LogWarning($"MaterialInstance - not initialized");
+				return;
+			}
+			computeInstance.Dispatch();
+			materialInstance.Render(camera);
 		}
 
 		public static int[] GenerateQuadIndices(int numQuads)
@@ -93,6 +110,7 @@ namespace Ahoy.Compute
 
 		protected virtual void Cleanup()
 		{
+			isInitialized = false;
 			if (positionsBuffer != null)
 				positionsBuffer.Dispose();
 			if (verticesBuffer != null)

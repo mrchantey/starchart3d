@@ -11,4 +11,5 @@ void CSMain(uint3 id : SV_DispatchThreadID)
 
 	int vi = si * 4;
 	PointsToStar(si,vi);
+	// vertices[vi] = float4(si,vi,0,0);
 }

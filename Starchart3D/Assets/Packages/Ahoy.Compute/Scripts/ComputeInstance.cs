@@ -22,8 +22,6 @@ namespace Ahoy.Compute
 
 		public int kernelIndex { get; private set; }
 
-		public bool base_isInitialized { get; private set; }
-
 		public void Init(int numThreads)
 		{
 			//ceil instead to generate all
@@ -58,7 +56,6 @@ namespace Ahoy.Compute
 
 			if (shaderProperties != null)
 				shaderProperties.Apply(computeShader, kernelIndex);
-			base_isInitialized = true;
 		}
 
 		//from that lady
@@ -72,16 +69,10 @@ namespace Ahoy.Compute
 
 		public virtual void Dispatch()
 		{
-			if (!base_isInitialized)
-				Debug.LogWarning($"ComputeInstance - not initialized");
-			else
-			{
-				if (shaderProperties != null & applyShaderPropertiesOnDispatch)
-					shaderProperties.Apply(computeShader, kernelIndex);
-				computeShader.Dispatch(kernelIndex, numGroups.x, numGroups.y, numGroups.z);
-			}
+			if (shaderProperties != null & applyShaderPropertiesOnDispatch)
+				shaderProperties.Apply(computeShader, kernelIndex);
+			computeShader.Dispatch(kernelIndex, numGroups.x, numGroups.y, numGroups.z);
 		}
-
 
 		//this should only be done after initialization
 		public void SetBool(String name, bool val) { computeShader.SetBool(name, val); }

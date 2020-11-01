@@ -50,6 +50,7 @@ void PointsToStar(int si, int vi){
 	vertices[vi+1] = mul(Ahoy_P,float4(posOff1,1));
 	vertices[vi+2] = mul(Ahoy_P,float4(posOff2,1));
 	vertices[vi+3] = mul(Ahoy_P,float4(posOff3,1));
+
 }
 
 

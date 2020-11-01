@@ -17,9 +17,9 @@ namespace Starchart3D
 			return GenerateQuadIndices(numPositions);
 		}
 
-		public override void Invoke()
+		public override void Init()
 		{
-			base.Invoke();
+			base.Init();
 
 			stars = new ComputeBuffer(shaderData.stars.Length, StarInfoShader.stride);
 

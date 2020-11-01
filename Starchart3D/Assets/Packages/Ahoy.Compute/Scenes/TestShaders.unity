@@ -123,6 +123,333 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!72 &2719190
+ComputeShader:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ComputeTriangle(Clone)
+  variants:
+  - serializedVersion: 2
+    targetRenderer: 2
+    targetLevel: 0
+    kernels:
+    - name: CSMain
+      variantMap:
+        :
+          serializedVersion: 2
+          cbVariantIndices: 00000000
+          cbs:
+          - name: $Globals
+            generatedName: 
+            bindPoint: 0
+            samplerBindPoint: -1
+            texDimension: -1
+          textures: []
+          builtinSamplers: []
+          inBuffers:
+          - name: positions
+            generatedName: 
+            bindPoint: 0
+            samplerBindPoint: -1
+            texDimension: -1
+          - name: indices
+            generatedName: 
+            bindPoint: 1
+            samplerBindPoint: -1
+            texDimension: -1
+          outBuffers:
+          - name: vertices
+            generatedName: 
+            bindPoint: 0
+            samplerBindPoint: -1
+            texDimension: -1
+          code: 445842438db624088f1e8b4fb96793e7337114ff0100000020050000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e08000000000000000800000053484558cc04000050000500330100006a08000159000004468e2000000000001b000000a200000400701000000000000c000000a20000040070100001000000040000009e00000400e0110000000000100000005f0000027200020068000002050000009b0000040800000008000000080000002600000800d0000012001000000000002a0002001a802000000000001a0000002300000822001000000000001a0002001a802000000000001a0000000a0002002300000a12001000000000000a001000000000002a802000000000001a0000001a001000000000002200000822001000000000000a001000000000000a802000000000001a0000003700000912001000000000001a001000000000000a0010000000000001400000ffffffff2000000722001000000000000a0010000000000001400000ffffffff1f0004031a001000000000003e000001150000012600000800d0000022001000000000000a001000000000000140000003000000a700008b022300808399190022001000000000001a00100000000000014000000000000006701000010000002300000f5200100000000000060010000000000002400000030000000000000003000000000000000240000001000000000000000200000000000000a700008b022300808399190012001000000000000a0010000000000001400000000000000670100001000000a700008b022300808399190042001000000000002a0010000000000001400000000000000670100001000000a700008b026300808399190072001000010000001a0010000000000001400000000000004672100000000000a700008b026300808399190072001000020000000a0010000000000001400000000000004672100000000000a700008b026300808399190072001000030000002a001000000000000140000000000000467210000000000038000008f2001000040000005605100001000000468e200000000000170000003200000af200100004000000468e200000000000160000000600100001000000460e1000040000003200000af200100001000000468e20000000000018000000a60a100001000000460e10000400000000000008f200100001000000460e100001000000468e20000000000019000000a8000009f2e01100000000001a001000000000000140000000000000460e10000100000038000008f2001000010000005605100002000000468e200000000000170000003200000af200100001000000468e200000000000160000000600100002000000460e1000010000003200000af200100001000000468e20000000000018000000a60a100002000000460e10000100000000000008f200100001000000460e100001000000468e20000000000019000000a8000009f2e01100000000000a001000000000000140000000000000460e10000100000038000008f2001000010000005605100003000000468e200000000000170000003200000af200100001000000468e200000000000160000000600100003000000460e1000010000003200000af200100001000000468e20000000000018000000a60a100003000000460e10000100000000000008f200100001000000460e100001000000468e20000000000019000000a8000009f2e01100000000002a001000000000000140000000000000460e1000010000003e000001
+          threadGroupSize: 080000000800000008000000
+          preprocessedSource: 
+          keywords: []
+          cacheKey:
+            serializedVersion: 2
+            Hash: 44f4a5f848afc0c289345ccc12218000
+          isCompiled: 1
+      validKeywords: []
+    constantBuffers:
+    - name: $Globals
+      byteSize: 480
+      params:
+      - name: Ahoy_MVP
+        type: 0
+        offset: 352
+        arraySize: 0
+        rowCount: 4
+        colCount: 4
+      - name: Ahoy_NumThreads
+        type: 1
+        offset: 416
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: Ahoy_NumThreadsX
+        type: 1
+        offset: 420
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: Ahoy_NumThreadsY
+        type: 1
+        offset: 424
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+    resourcesResolved: 1
+    compilerPlatform: 4
+    platformKeywords: 08c68504
+    needsReflectionData: 0
+  m_CompilationContext:
+    buildTarget:
+      platform: 5
+      subTarget: 0
+      extendedPlatform: 0
+    sourceFileName: ComputeTriangle.compute
+    source: "//#pragma kernel CSMain\r\n\r\n#include \"./utility.cginc\"\r\n\r\n\r\n[numthreads(8,
+      8, 8)]\r\nvoid CSMain(uint3 id : SV_DispatchThreadID)\r\n{\r\n\tint i = GetThreadIndex(id);\r\n\tif(i
+      == -1)\treturn;\r\n\r\n\tint ii = i * 3;\r\n\r\n\tint index0 = indices[ii];\r\n\tint
+      index1 = indices[ii+1];\r\n\tint index2 = indices[ii+2];\r\n\r\n\tfloat3 pos0
+      = positions[index0];\r\n\tfloat3 pos1 = positions[index1];\r\n\tfloat3 pos2
+      = positions[index2];\r\n\r\n\tvertices[index0]  = mul(Ahoy_MVP,float4(pos0,1));\r\n\tvertices[index1] 
+      = mul(Ahoy_MVP,float4(pos1,1));\r\n\tvertices[index2]  = mul(Ahoy_MVP,float4(pos2,1));\r\n}"
+    sourceFile: C:/Users/petey/work/ahoy.unity/Ahoy/Assets/Packages/Ahoy.Compute/Shaders/ComputeTriangle.compute
+    kernels:
+    - CSMain
+    kernelMacros:
+    - []
+    compilationFlags: 0
+    apiMask: 4
+    supportedAPIs: 4294967295
+    includeHash0: 815213443
+    includeHash1: 2773114845
+    includeHash2: 2072214643
+    includeHash3: 1212202227
+    includeFiles:
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/HLSLSupport.cginc
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/UnityCG.cginc
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/UnityInstancing.cginc
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/UnityShaderUtilities.cginc
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/UnityShaderVariables.cginc
+    - C:/Users/petey/work/ahoy.unity/Ahoy/Assets/Packages/Ahoy.Compute/Shaders/utility.cginc
+  errors: []
+  m_HasEditorOnlyVariant: 0
+--- !u!72 &259427372
+ComputeShader:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ComputeBillboard(Clone)
+  variants:
+  - serializedVersion: 2
+    targetRenderer: 2
+    targetLevel: 0
+    kernels:
+    - name: CSMain
+      variantMap:
+        :
+          serializedVersion: 2
+          cbVariantIndices: 00000000
+          cbs:
+          - name: $Globals
+            generatedName: 
+            bindPoint: 0
+            samplerBindPoint: -1
+            texDimension: -1
+          textures: []
+          builtinSamplers: []
+          inBuffers:
+          - name: positions
+            generatedName: 
+            bindPoint: 0
+            samplerBindPoint: -1
+            texDimension: -1
+          outBuffers:
+          - name: vertices
+            generatedName: 
+            bindPoint: 0
+            samplerBindPoint: -1
+            texDimension: -1
+          code: 445842431db5e079e72450884150ea226e50012c01000000b4070000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e080000000000000008000000534845586007000050000500d80100006a08000159000004468e2000000000001e000000a200000400701000000000000c0000009e00000400e0110000000000100000005f0000027200020068000002060000009b0000040800000008000000080000002600000800d0000012001000000000002a0002001a802000000000001a0000002300000822001000000000001a0002001a802000000000001a0000000a0002002300000a12001000000000000a001000000000002a802000000000001a0000001a001000000000002200000822001000000000000a001000000000000a802000000000001a0000003700000912001000000000001a001000000000000a0010000000000001400000ffffffff2000000722001000000000000a0010000000000001400000ffffffff1f0004031a001000000000003e000001150000012900000722001000000000000a001000000000000140000002000000a700008b026300808399190072001000010000000a0010000000000001400000000000004672100000000000380000087200100002000000560510000100000046822000000000000f0000003200000ab20010000100000046882000000000000e000000060010000100000046081000020000003200000a7200100001000000468220000000000010000000a60a100001000000460310000100000000000008720010000100000046021000010000004682200000000000110000001800000842001000000000000a802000000000001d00000001400000000000003700000a42001000000000002a00100000000000014000000000803f0a802000000000001d0000003800000782001000000000002a0010000100000001400000000000c00e00000b8200100001000000024000000000803f0000803f0000803f0000803f1a802000000000000b0000003800000782001000000000003a001000000000003a001000010000000e00000882001000000000003a001000000000001a802000000000001c0000000000000982001000010000001a802000000000001c0000000a802000000000001c0000003800000782001000000000003a001000000000003a001000010000003800000782001000000000003a001000000000002a001000000000003800000782001000000000003a0010000000000001400000cdcc4c3d3700000a42001000000000001a802000000000001d0000003a001000000000002a001000000000003200000c7200100002000000a60a100000000000024000000000803f0000803f000000000000000046021000010000003200000c7200100003000000a60a100000000000024000000000803f000080bf000000000000000046021000010000003200000c7200100004000000a60a10000000000002400000000080bf000080bf000000000000000046021000010000003200000c7200100001000000a60a10000000000002400000000080bf0000803f0000000000000000460210000100000038000008f2001000050000005605100002000000468e2000000000000b0000003200000af200100005000000468e2000000000000a0000000600100002000000460e1000050000003200000af200100002000000468e2000000000000c000000a60a100002000000460e10000500000000000008f200100002000000460e100002000000468e2000000000000d000000a8000009f2e01100000000001a001000000000000140000000000000460e1000020000008c000014d200100000000000024000001e000000000000001e0000001e00000002400000020000000000000002000000020000000600100000000000024000000100000000000000020000000300000038000008f2001000020000005605100003000000468e2000000000000b0000003200000af200100002000000468e2000000000000a0000000600100003000000460e1000020000003200000af200100002000000468e2000000000000c000000a60a100003000000460e10000200000000000008f200100002000000460e100002000000468e2000000000000d000000a8000009f2e01100000000000a001000000000000140000000000000460e10000200000038000008f2001000020000005605100004000000468e2000000000000b0000003200000af200100002000000468e2000000000000a0000000600100004000000460e1000020000003200000af200100002000000468e2000000000000c000000a60a100004000000460e10000200000000000008f200100002000000460e100002000000468e2000000000000d000000a8000009f2e01100000000002a001000000000000140000000000000460e10000200000038000008f2001000020000005605100001000000468e2000000000000b0000003200000af200100002000000468e2000000000000a0000000600100001000000460e1000020000003200000af200100001000000468e2000000000000c000000a60a100001000000460e10000200000000000008f200100001000000460e100001000000468e2000000000000d000000a8000009f2e01100000000003a001000000000000140000000000000460e1000010000003e000001
+          threadGroupSize: 080000000800000008000000
+          preprocessedSource: 
+          keywords: []
+          cacheKey:
+            serializedVersion: 2
+            Hash: 3895975ca530944aa00d732c496cb09f
+          isCompiled: 1
+      validKeywords: []
+    constantBuffers:
+    - name: $Globals
+      byteSize: 480
+      params:
+      - name: Ahoy_P
+        type: 0
+        offset: 160
+        arraySize: 0
+        rowCount: 4
+        colCount: 4
+      - name: Ahoy_MV
+        type: 0
+        offset: 224
+        arraySize: 0
+        rowCount: 4
+        colCount: 4
+      - name: Ahoy_NumThreads
+        type: 1
+        offset: 416
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: Ahoy_NumThreadsX
+        type: 1
+        offset: 420
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: Ahoy_NumThreadsY
+        type: 1
+        offset: 424
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: Ahoy_ScreenParams
+        type: 0
+        offset: 448
+        arraySize: 0
+        rowCount: 1
+        colCount: 4
+      - name: _Size
+        type: 0
+        offset: 464
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: _ScreenSpace
+        type: 2
+        offset: 468
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+    resourcesResolved: 1
+    compilerPlatform: 4
+    platformKeywords: 08c68504
+    needsReflectionData: 0
+  m_CompilationContext:
+    buildTarget:
+      platform: 5
+      subTarget: 0
+      extendedPlatform: 0
+    sourceFileName: ComputeBillboard.compute
+    source: "//#pragma kernel CSMain\r\n\r\n#include \"./utility.cginc\"\r\n\r\n[numthreads(8,
+      8, 8)]\r\nvoid CSMain(uint3 id : SV_DispatchThreadID)\r\n{\r\n\tint i = GetThreadIndex(id);\r\n\tif(i
+      == -1)\treturn;\r\n\r\n\tint pi = i;\r\n\tint vi = i * 4;\r\n\tPointsToQuad(positions[pi],vi);\r\n}"
+    sourceFile: C:/Users/petey/work/ahoy.unity/Ahoy/Assets/Packages/Ahoy.Compute/Shaders/ComputeBillboard.compute
+    kernels:
+    - CSMain
+    kernelMacros:
+    - []
+    compilationFlags: 0
+    apiMask: 4
+    supportedAPIs: 4294967295
+    includeHash0: 815213443
+    includeHash1: 2773114845
+    includeHash2: 2072214643
+    includeHash3: 1212202227
+    includeFiles:
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/HLSLSupport.cginc
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/UnityCG.cginc
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/UnityInstancing.cginc
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/UnityShaderUtilities.cginc
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/UnityShaderVariables.cginc
+    - C:/Users/petey/work/ahoy.unity/Ahoy/Assets/Packages/Ahoy.Compute/Shaders/utility.cginc
+  errors: []
+  m_HasEditorOnlyVariant: 0
+--- !u!21 &312632870
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ahoy.Compute.Simple
+  m_Shader: {fileID: 4800000, guid: 9eddc568c7e295e428325a8c750a0049, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AlphaClip: 0
+    - _Blend: 0
+    - _BlendDestin: 10
+    - _BlendSource: 5
+    - _BumpScale: 1
+    - _Cull: 0
+    - _Cutoff: 0.5
+    - _DstBlend: 0
+    - _EnvironmentReflections: 1
+    - _GlossMapScale: 0
+    - _Glossiness: 0
+    - _GlossyReflections: 0
+    - _Metallic: 0
+    - _OcclusionStrength: 1
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _Smoothness: 0.5
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _Surface: 0
+    - _WorkflowMode: 1
+    - _ZTest: 4
+    - _ZWrite: 0
+    m_Colors:
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &355600543
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,20 +495,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 749ca95f4c354e1488740eeeaf4a3365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invokeSettings:
-    debug: 0
-    InvokeOnValidate: 0
-    InvokeOnStart: 1
-    InvokeOnUpdate: 0
-    InvokeOnFixedUpdate: 0
-    InvokeOnNthFrame: 0
-    InvokeEveryNthFrame: 0
-    nthFrame: 5
-    InvokeEveryInterval: 0
-    InvokeEveryIntervalFixed: 0
-    interval: 5
-  computeInstance: {fileID: 0}
-  materialInstance: {fileID: 0}
+  computeInstance: {fileID: 355600547}
+  materialInstance: {fileID: 355600546}
   shaderData: {fileID: 11400000, guid: 99f431104de35794ea2d46fc6b0a329d, type: 2}
 --- !u!114 &355600546
 MonoBehaviour:
@@ -196,17 +511,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialTemplate: {fileID: 2100000, guid: cac0d016d9c6dd54daff2cbaf71409e8, type: 2}
-  material: {fileID: 0}
+  material: {fileID: 685870335}
   bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 50000, y: 50000, z: 50000}
   applyShaderPropertiesOnDispatch: 1
+  instantiateTemplate: 1
   shaderProperties: {fileID: 0}
   castShadows: 0
   receiveShadows: 0
-  layer:
-    serializedVersion: 2
-    m_Bits: 1
+  layer: 1
 --- !u!114 &355600547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,39 +534,298 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   computeTemplate: {fileID: 7200000, guid: 2323c4dd09aee9e4ba1a9d2c39cb8729, type: 3}
-  computeShader: {fileID: 0}
+  computeShader: {fileID: 2719190}
   applyShaderPropertiesOnDispatch: 1
   shaderProperties: {fileID: 0}
---- !u!1 &449353749
-GameObject:
+--- !u!72 &437853917
+ComputeShader:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_Name: ComputeLineConsecutive(Clone)
+  variants:
+  - serializedVersion: 2
+    targetRenderer: 2
+    targetLevel: 0
+    kernels:
+    - name: CSMain
+      variantMap:
+        :
+          serializedVersion: 2
+          cbVariantIndices: 00000000
+          cbs:
+          - name: $Globals
+            generatedName: 
+            bindPoint: 0
+            samplerBindPoint: -1
+            texDimension: -1
+          textures: []
+          builtinSamplers: []
+          inBuffers:
+          - name: positions
+            generatedName: 
+            bindPoint: 0
+            samplerBindPoint: -1
+            texDimension: -1
+          outBuffers:
+          - name: vertices
+            generatedName: 
+            bindPoint: 0
+            samplerBindPoint: -1
+            texDimension: -1
+          code: 445842430cb36e2c34c603150baac4fdd6613db4010000005c0a0000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e08000000000000000800000053484558080a000050000500820200006a08000159000004468e2000000000001e000000a200000400701000000000000c0000009e00000400e0110000000000100000005f0000027200020068000002060000009b0000040800000008000000080000002600000800d0000012001000000000002a0002001a802000000000001a0000002300000822001000000000001a0002001a802000000000001a0000000a0002002300000a12001000000000000a001000000000002a802000000000001a0000001a001000000000002200000822001000000000000a001000000000000a802000000000001a0000003700000912001000000000001a001000000000000a0010000000000001400000ffffffff2000000722001000000000000a0010000000000001400000ffffffff1f0004031a001000000000003e000001150000011e00000722001000000000000a0010000000000001400000010000002900000742001000000000000a001000000000000140000002000000a700008b026300808399190072001000010000000a0010000000000001400000000000004672100000000000a700008b026300808399190072001000020000001a0010000000000001400000000000004672100000000000380000087200100003000000560510000100000046822000000000000f0000003200000ab20010000100000046882000000000000e000000060010000100000046081000030000003200000a7200100001000000468220000000000010000000a60a10000100000046031000010000000000000872001000010000004602100001000000468220000000000011000000380000087200100003000000560510000200000046822000000000000f0000003200000ab20010000200000046882000000000000e000000060010000200000046081000030000003200000a7200100002000000468220000000000010000000a60a100002000000460310000200000000000008720010000200000046021000020000004682200000000000110000001800000822001000000000000a802000000000001d00000001400000000000003700000a22001000000000001a00100000000000014000000000803f0a802000000000001d0000003800000782001000000000002a0010000100000001400000000000c00e00000b8200100001000000024000000000803f0000803f0000803f0000803f1a802000000000000b0000003800000782001000000000003a001000000000003a001000010000000e00000882001000000000003a001000000000001a802000000000001c0000000000000982001000020000001a802000000000001c0000000a802000000000001c0000003800000782001000020000003a00100002000000014000000000003f3800000782001000000000003a001000000000003a001000020000003800000782001000000000001a001000000000003a001000000000003800000782001000000000003a0010000000000001400000cdcccc3d3700000a82001000000000001a802000000000001d0000003a001000000000001a001000000000000f0000088200100001000000f60f100001000000a60a108041000000020000000e00000882001000010000003a001000010000001a802000000000001c0000003800000782001000010000003a001000020000003a001000010000003800000782001000010000001a001000000000003a001000010000003800000782001000010000003a0010000100000001400000cdcccc3d3700000a22001000000000001a802000000000001d0000003a001000010000001a00100000000000000000077200100003000000260910000100000026091000020000003800000a72001000030000004602100003000000024000000000003f0000003f0000003f000000000000000872001000040000009604108041000000010000009604100002000000380000077200100005000000460210000300000046021000040000003200000a720010000300000026091000030000009604100004000000460210804100000005000000100000078200100001000000460210000300000046021000030000004400000582001000010000003a00100001000000380000077200100003000000f60f10000100000046021000030000003700000b720010000300000056852000000000001d00000046021000030000004602108041000000030000003200000972001000040000004602100003000000560510000000000046021000020000003200000a7200100002000000460210804100000003000000560510000000000046021000020000003200000a7200100005000000460210804100000003000000f60f10000000000046021000010000003200000972001000010000004602100003000000f60f100000000000460210000100000038000008f2001000030000005605100004000000468e2000000000000b0000003200000af200100003000000468e2000000000000a0000000600100004000000460e1000030000003200000af200100003000000468e2000000000000c000000a60a100004000000460e10000300000000000008f200100003000000460e100003000000468e2000000000000d000000a8000009f2e01100000000002a001000000000000140000000000000460e1000030000008c000014b200100000000000024000001e0000001e000000000000001e00000002400000020000000200000000000000020000000600100000000000024000000100000002000000000000000300000038000008f2001000030000005605100002000000468e2000000000000b0000003200000af200100003000000468e2000000000000a0000000600100002000000460e1000030000003200000af200100002000000468e2000000000000c000000a60a100002000000460e10000300000000000008f200100002000000460e100002000000468e2000000000000d000000a8000009f2e01100000000000a001000000000000140000000000000460e10000200000038000008f2001000020000005605100005000000468e2000000000000b0000003200000af200100002000000468e2000000000000a0000000600100005000000460e1000020000003200000af200100002000000468e2000000000000c000000a60a100005000000460e10000200000000000008f200100002000000460e100002000000468e2000000000000d000000a8000009f2e01100000000001a001000000000000140000000000000460e10000200000038000008f2001000020000005605100001000000468e2000000000000b0000003200000af200100002000000468e2000000000000a0000000600100001000000460e1000020000003200000af200100001000000468e2000000000000c000000a60a100001000000460e10000200000000000008f200100001000000460e100001000000468e2000000000000d000000a8000009f2e01100000000003a001000000000000140000000000000460e1000010000003e000001
+          threadGroupSize: 080000000800000008000000
+          preprocessedSource: 
+          keywords: []
+          cacheKey:
+            serializedVersion: 2
+            Hash: c995ed35652a7dbcf1700a58fee2ded7
+          isCompiled: 1
+      validKeywords: []
+    constantBuffers:
+    - name: $Globals
+      byteSize: 480
+      params:
+      - name: Ahoy_P
+        type: 0
+        offset: 160
+        arraySize: 0
+        rowCount: 4
+        colCount: 4
+      - name: Ahoy_MV
+        type: 0
+        offset: 224
+        arraySize: 0
+        rowCount: 4
+        colCount: 4
+      - name: Ahoy_NumThreads
+        type: 1
+        offset: 416
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: Ahoy_NumThreadsX
+        type: 1
+        offset: 420
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: Ahoy_NumThreadsY
+        type: 1
+        offset: 424
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: Ahoy_ScreenParams
+        type: 0
+        offset: 448
+        arraySize: 0
+        rowCount: 1
+        colCount: 4
+      - name: _Size
+        type: 0
+        offset: 464
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: _ScreenSpace
+        type: 2
+        offset: 468
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+    resourcesResolved: 1
+    compilerPlatform: 4
+    platformKeywords: 08c68504
+    needsReflectionData: 0
+  m_CompilationContext:
+    buildTarget:
+      platform: 5
+      subTarget: 0
+      extendedPlatform: 0
+    sourceFileName: ComputeLineConsecutive.compute
+    source: "//#pragma kernel CSMain\r\n\r\n#include \"./utility.cginc\"\r\n\r\n[numthreads(8,
+      8, 8)]\r\nvoid CSMain(uint3 id : SV_DispatchThreadID)\r\n{\r\n\tint i = GetThreadIndex(id);\r\n\tif(i
+      == -1)\treturn;\r\n\r\n\tint pi0 = i;\r\n\tint pi1 = pi0 + 1;\r\n\tint vi =
+      i * 4;\r\n\tPointsToLine(positions[pi0],positions[pi1],vi);\r\n\r\n}"
+    sourceFile: C:/Users/petey/work/ahoy.unity/Ahoy/Assets/Packages/Ahoy.Compute/Shaders/ComputeLineConsecutive.compute
+    kernels:
+    - CSMain
+    kernelMacros:
+    - []
+    compilationFlags: 0
+    apiMask: 4
+    supportedAPIs: 4294967295
+    includeHash0: 815213443
+    includeHash1: 2773114845
+    includeHash2: 2072214643
+    includeHash3: 1212202227
+    includeFiles:
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/HLSLSupport.cginc
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/UnityCG.cginc
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/UnityInstancing.cginc
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/UnityShaderUtilities.cginc
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/UnityShaderVariables.cginc
+    - C:/Users/petey/work/ahoy.unity/Ahoy/Assets/Packages/Ahoy.Compute/Shaders/utility.cginc
+  errors: []
+  m_HasEditorOnlyVariant: 0
+--- !u!21 &685870335
+Material:
   serializedVersion: 6
-  m_Component:
-  - component: {fileID: 449353750}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &449353750
-Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 449353749}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1020308, y: 1.3255949, z: -2.4677992}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Name: Ahoy.Compute.Simple
+  m_Shader: {fileID: 4800000, guid: 9eddc568c7e295e428325a8c750a0049, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AlphaClip: 0
+    - _Blend: 0
+    - _BlendDestin: 10
+    - _BlendSource: 5
+    - _BumpScale: 1
+    - _Cull: 0
+    - _Cutoff: 0.5
+    - _DstBlend: 0
+    - _EnvironmentReflections: 1
+    - _GlossMapScale: 0
+    - _Glossiness: 0
+    - _GlossyReflections: 0
+    - _Metallic: 0
+    - _OcclusionStrength: 1
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _Smoothness: 0.5
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _Surface: 0
+    - _WorkflowMode: 1
+    - _ZTest: 4
+    - _ZWrite: 0
+    m_Colors:
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+  m_BuildTextureStacks: []
+--- !u!21 &709148784
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ahoy.Compute.Simple
+  m_Shader: {fileID: 4800000, guid: 9eddc568c7e295e428325a8c750a0049, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AlphaClip: 0
+    - _Blend: 0
+    - _BlendDestin: 10
+    - _BlendSource: 5
+    - _BumpScale: 1
+    - _Cull: 0
+    - _Cutoff: 0.5
+    - _DstBlend: 0
+    - _EnvironmentReflections: 1
+    - _GlossMapScale: 0
+    - _Glossiness: 0
+    - _GlossyReflections: 0
+    - _Metallic: 0
+    - _OcclusionStrength: 1
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _Smoothness: 0.5
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _Surface: 0
+    - _WorkflowMode: 1
+    - _ZTest: 4
+    - _ZWrite: 0
+    m_Colors:
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &1071199711
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,9 +835,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1071199713}
+  - component: {fileID: 1071199712}
   - component: {fileID: 1071199715}
   - component: {fileID: 1071199714}
-  - component: {fileID: 1071199712}
   m_Layer: 0
   m_Name: Quad Renderer
   m_TagString: Untagged
@@ -284,20 +857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed587305d326cce42a6404bb5756987a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invokeSettings:
-    debug: 0
-    InvokeOnValidate: 0
-    InvokeOnStart: 1
-    InvokeOnUpdate: 0
-    InvokeOnFixedUpdate: 0
-    InvokeOnNthFrame: 0
-    InvokeEveryNthFrame: 0
-    nthFrame: 5
-    InvokeEveryInterval: 0
-    InvokeEveryIntervalFixed: 0
-    interval: 4
-  computeInstance: {fileID: 0}
-  materialInstance: {fileID: 0}
+  computeInstance: {fileID: 1071199715}
+  materialInstance: {fileID: 1071199714}
   shaderData: {fileID: 11400000, guid: 99f431104de35794ea2d46fc6b0a329d, type: 2}
 --- !u!4 &1071199713
 Transform:
@@ -326,17 +887,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialTemplate: {fileID: 2100000, guid: cac0d016d9c6dd54daff2cbaf71409e8, type: 2}
-  material: {fileID: 0}
+  material: {fileID: 312632870}
   bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 50000, y: 50000, z: 50000}
   applyShaderPropertiesOnDispatch: 1
+  instantiateTemplate: 1
   shaderProperties: {fileID: 0}
   castShadows: 0
   receiveShadows: 0
-  layer:
-    serializedVersion: 2
-    m_Bits: 0
+  layer: 1
 --- !u!114 &1071199715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,7 +910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   computeTemplate: {fileID: 7200000, guid: 6ef4297cd1b5dfd4ca5c9d95e3035286, type: 3}
-  computeShader: {fileID: 0}
+  computeShader: {fileID: 259427372}
   applyShaderPropertiesOnDispatch: 1
   shaderProperties: {fileID: 11400000, guid: c352ce48439f77b4a8be96701c86d4ab, type: 2}
 --- !u!1 &1350309544
@@ -371,7 +931,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1350309545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,20 +944,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb78dd8124679314486a370e757a63b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invokeSettings:
-    debug: 0
-    InvokeOnValidate: 0
-    InvokeOnStart: 1
-    InvokeOnUpdate: 0
-    InvokeOnFixedUpdate: 0
-    InvokeOnNthFrame: 0
-    InvokeEveryNthFrame: 0
-    nthFrame: 5
-    InvokeEveryInterval: 0
-    InvokeEveryIntervalFixed: 0
-    interval: 5
-  computeInstance: {fileID: 0}
-  materialInstance: {fileID: 0}
+  computeInstance: {fileID: 1350309547}
+  materialInstance: {fileID: 1350309546}
   shaderData: {fileID: 11400000, guid: 99f431104de35794ea2d46fc6b0a329d, type: 2}
 --- !u!114 &1350309546
 MonoBehaviour:
@@ -412,17 +960,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialTemplate: {fileID: 2100000, guid: cac0d016d9c6dd54daff2cbaf71409e8, type: 2}
-  material: {fileID: 0}
+  material: {fileID: 1586063327}
   bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 50000, y: 50000, z: 50000}
   applyShaderPropertiesOnDispatch: 1
+  instantiateTemplate: 1
   shaderProperties: {fileID: 0}
   castShadows: 0
   receiveShadows: 0
-  layer:
-    serializedVersion: 2
-    m_Bits: 1
+  layer: 1
 --- !u!114 &1350309547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,7 +983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   computeTemplate: {fileID: 7200000, guid: 823c309b71869364f8417e2797ad6b76, type: 3}
-  computeShader: {fileID: 0}
+  computeShader: {fileID: 1440044280}
   applyShaderPropertiesOnDispatch: 1
   shaderProperties: {fileID: 11400000, guid: c352ce48439f77b4a8be96701c86d4ab, type: 2}
 --- !u!4 &1350309548
@@ -448,11 +995,144 @@ Transform:
   m_GameObject: {fileID: 1350309544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!72 &1440044280
+ComputeShader:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ComputeLine(Clone)
+  variants:
+  - serializedVersion: 2
+    targetRenderer: 2
+    targetLevel: 0
+    kernels:
+    - name: CSMain
+      variantMap:
+        :
+          serializedVersion: 2
+          cbVariantIndices: 00000000
+          cbs:
+          - name: $Globals
+            generatedName: 
+            bindPoint: 0
+            samplerBindPoint: -1
+            texDimension: -1
+          textures: []
+          builtinSamplers: []
+          inBuffers:
+          - name: positions
+            generatedName: 
+            bindPoint: 0
+            samplerBindPoint: -1
+            texDimension: -1
+          outBuffers:
+          - name: vertices
+            generatedName: 
+            bindPoint: 0
+            samplerBindPoint: -1
+            texDimension: -1
+          code: 4458424331c0bb707cca5802629993403344954b010000004c0a0000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e08000000000000000800000053484558f8090000500005007e0200006a08000159000004468e2000000000001e000000a200000400701000000000000c0000009e00000400e0110000000000100000005f0000027200020068000002060000009b0000040800000008000000080000002600000800d0000012001000000000002a0002001a802000000000001a0000002300000822001000000000001a0002001a802000000000001a0000000a0002002300000a12001000000000000a001000000000002a802000000000001a0000001a001000000000002200000822001000000000000a001000000000000a802000000000001a0000003700000912001000000000001a001000000000000a0010000000000001400000ffffffff2000000722001000000000000a0010000000000001400000ffffffff1f0004031a001000000000003e000001150000018c000014f200100001000000024000001f0000001e0000001e0000001e0000000240000001000000020000000200000002000000060010000000000002400000010000000100000002000000030000002900000a320010000000000006001000000000000240000001000000020000000000000000000000a700008b0263008083991900d2001000000000000a0010000000000001400000000000000679100000000000a700008b026300808399190072001000020000000a0010000100000001400000000000004672100000000000380000087200100003000000a60a10000000000046822000000000000f0000003200000a720010000300000046822000000000000e000000060010000000000046021000030000003200000ad200100000000000068920000000000010000000f60f100000000000060910000300000000000008d200100000000000060e100000000000068920000000000011000000380000087200100003000000560510000200000046822000000000000f0000003200000ab20010000200000046882000000000000e000000060010000200000046081000030000003200000a7200100002000000468220000000000010000000a60a100002000000460310000200000000000008720010000200000046021000020000004682200000000000110000001800000812001000010000000a802000000000001d00000001400000000000003700000a12001000010000000a00100001000000014000000000803f0a802000000000001d0000003800000782001000020000003a0010000000000001400000000000c00e00000b1200100003000000024000000000803f0000803f0000803f0000803f1a802000000000000b0000003800000782001000020000003a001000020000000a001000030000000e00000882001000020000003a001000020000001a802000000000001c0000000000000922001000030000001a802000000000001c0000000a802000000000001c0000003800000722001000030000001a00100003000000014000000000003f3800000782001000020000003a001000020000001a001000030000003800000782001000020000000a001000010000003a001000020000003800000782001000020000003a0010000200000001400000cdcccc3d3700000a82001000020000001a802000000000001d0000003a001000020000000a001000010000000f00000812001000030000000600100003000000a60a108041000000020000000e00000812001000030000000a001000030000001a802000000000001c0000003800000712001000030000001a001000030000000a001000030000003800000712001000030000000a001000010000000a001000030000003800000712001000030000000a0010000300000001400000cdcccc3d3700000a12001000010000001a802000000000001d0000000a001000030000000a00100001000000000000077200100003000000360e10000000000026091000020000003800000a72001000030000004602100003000000024000000000003f0000003f0000003f00000000000000087200100004000000e608108041000000000000009604100002000000380000077200100005000000460210000300000046021000040000003200000a720010000300000026091000030000009604100004000000460210804100000005000000100000078200100003000000460210000300000046021000030000004400000582001000030000003a00100003000000380000077200100003000000f60f10000300000046021000030000003700000b720010000300000056852000000000001d00000046021000030000004602108041000000030000003200000972001000040000004602100003000000060010000100000046021000020000003200000a7200100002000000460210804100000003000000060010000100000046021000020000003200000a7200100005000000460210804100000003000000f60f100002000000860310000000000032000009d2001000000000000609100003000000f60f100002000000060e10000000000038000008f2001000030000005605100004000000468e2000000000000b0000003200000af200100003000000468e2000000000000a0000000600100004000000460e1000030000003200000af200100003000000468e2000000000000c000000a60a100004000000460e10000300000000000008f200100003000000460e100003000000468e2000000000000d000000a8000009f2e01100000000001a001000000000000140000000000000460e10000300000038000008f2001000030000005605100002000000468e2000000000000b0000003200000af200100003000000468e2000000000000a0000000600100002000000460e1000030000003200000af200100002000000468e2000000000000c000000a60a100002000000460e10000300000000000008f200100002000000460e100002000000468e2000000000000d000000a8000009f2e01100000000001a001000010000000140000000000000460e10000200000038000008f2001000020000005605100005000000468e2000000000000b0000003200000af200100002000000468e2000000000000a0000000600100005000000460e1000020000003200000af200100002000000468e2000000000000c000000a60a100005000000460e10000200000000000008f200100002000000460e100002000000468e2000000000000d000000a8000009f2e01100000000002a001000010000000140000000000000460e10000200000038000008f200100002000000a60a100000000000468e2000000000000b0000003200000af200100002000000468e2000000000000a0000000600100000000000460e1000020000003200000af200100002000000468e2000000000000c000000f60f100000000000460e10000200000000000008f200100002000000460e100002000000468e2000000000000d000000a8000009f2e01100000000003a001000010000000140000000000000460e1000020000003e000001
+          threadGroupSize: 080000000800000008000000
+          preprocessedSource: 
+          keywords: []
+          cacheKey:
+            serializedVersion: 2
+            Hash: 5a65c8ff982a74037adf2ab3482e7116
+          isCompiled: 1
+      validKeywords: []
+    constantBuffers:
+    - name: $Globals
+      byteSize: 480
+      params:
+      - name: Ahoy_P
+        type: 0
+        offset: 160
+        arraySize: 0
+        rowCount: 4
+        colCount: 4
+      - name: Ahoy_MV
+        type: 0
+        offset: 224
+        arraySize: 0
+        rowCount: 4
+        colCount: 4
+      - name: Ahoy_NumThreads
+        type: 1
+        offset: 416
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: Ahoy_NumThreadsX
+        type: 1
+        offset: 420
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: Ahoy_NumThreadsY
+        type: 1
+        offset: 424
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: Ahoy_ScreenParams
+        type: 0
+        offset: 448
+        arraySize: 0
+        rowCount: 1
+        colCount: 4
+      - name: _Size
+        type: 0
+        offset: 464
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: _ScreenSpace
+        type: 2
+        offset: 468
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+    resourcesResolved: 1
+    compilerPlatform: 4
+    platformKeywords: 08c68504
+    needsReflectionData: 0
+  m_CompilationContext:
+    buildTarget:
+      platform: 5
+      subTarget: 0
+      extendedPlatform: 0
+    sourceFileName: ComputeLine.compute
+    source: "//#pragma kernel CSMain\r\n\r\n#include \"./utility.cginc\"\r\n\r\n[numthreads(8,
+      8, 8)]\r\nvoid CSMain(uint3 id : SV_DispatchThreadID)\r\n{\r\n\tint i = GetThreadIndex(id);\r\n\tif(i
+      == -1)\treturn;\r\n\r\n\tint pi0 = i*2;\r\n\tint pi1 = pi0 + 1;\r\n\tint vi
+      = i * 4;\r\n\tPointsToLine(positions[pi0],positions[pi1],vi);\r\n}"
+    sourceFile: C:/Users/petey/work/ahoy.unity/Ahoy/Assets/Packages/Ahoy.Compute/Shaders/ComputeLine.compute
+    kernels:
+    - CSMain
+    kernelMacros:
+    - []
+    compilationFlags: 0
+    apiMask: 4
+    supportedAPIs: 4294967295
+    includeHash0: 815213443
+    includeHash1: 2773114845
+    includeHash2: 2072214643
+    includeHash3: 1212202227
+    includeFiles:
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/HLSLSupport.cginc
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/UnityCG.cginc
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/UnityInstancing.cginc
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/UnityShaderUtilities.cginc
+    - C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/CGIncludes/UnityShaderVariables.cginc
+    - C:/Users/petey/work/ahoy.unity/Ahoy/Assets/Packages/Ahoy.Compute/Shaders/utility.cginc
+  errors: []
+  m_HasEditorOnlyVariant: 0
 --- !u!1 &1501751575
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,20 +1164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75610103765998a47ae0efa94f39af35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invokeSettings:
-    debug: 0
-    InvokeOnValidate: 0
-    InvokeOnStart: 1
-    InvokeOnUpdate: 0
-    InvokeOnFixedUpdate: 0
-    InvokeOnNthFrame: 0
-    InvokeEveryNthFrame: 0
-    nthFrame: 5
-    InvokeEveryInterval: 0
-    InvokeEveryIntervalFixed: 0
-    interval: 5
-  computeInstance: {fileID: 0}
-  materialInstance: {fileID: 0}
+  computeInstance: {fileID: 1501751578}
+  materialInstance: {fileID: 1501751577}
   shaderData: {fileID: 11400000, guid: 99f431104de35794ea2d46fc6b0a329d, type: 2}
 --- !u!114 &1501751577
 MonoBehaviour:
@@ -512,17 +1180,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialTemplate: {fileID: 2100000, guid: cac0d016d9c6dd54daff2cbaf71409e8, type: 2}
-  material: {fileID: 0}
+  material: {fileID: 709148784}
   bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 50000, y: 50000, z: 50000}
   applyShaderPropertiesOnDispatch: 1
+  instantiateTemplate: 1
   shaderProperties: {fileID: 0}
   castShadows: 0
   receiveShadows: 0
-  layer:
-    serializedVersion: 2
-    m_Bits: 0
+  layer: 1
 --- !u!114 &1501751578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,7 +1203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   computeTemplate: {fileID: 7200000, guid: b64f218a13b56a64897043c1b569007b, type: 3}
-  computeShader: {fileID: 0}
+  computeShader: {fileID: 437853917}
   applyShaderPropertiesOnDispatch: 1
   shaderProperties: {fileID: 11400000, guid: c352ce48439f77b4a8be96701c86d4ab, type: 2}
 --- !u!4 &1501751579
@@ -638,13 +1305,91 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540208597}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.40722808, y: -0.24235266, z: 0.11301089, w: 0.87330353}
+  m_LocalPosition: {x: 0, y: 2.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: -31.02, z: 0}
+--- !u!21 &1586063327
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ahoy.Compute.Simple
+  m_Shader: {fileID: 4800000, guid: 9eddc568c7e295e428325a8c750a0049, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AlphaClip: 0
+    - _Blend: 0
+    - _BlendDestin: 10
+    - _BlendSource: 5
+    - _BumpScale: 1
+    - _Cull: 0
+    - _Cutoff: 0.5
+    - _DstBlend: 0
+    - _EnvironmentReflections: 1
+    - _GlossMapScale: 0
+    - _Glossiness: 0
+    - _GlossyReflections: 0
+    - _Metallic: 0
+    - _OcclusionStrength: 1
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _Smoothness: 0.5
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _Surface: 0
+    - _WorkflowMode: 1
+    - _ZTest: 4
+    - _ZWrite: 0
+    m_Colors:
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &1881946181
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,7 +1517,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968651356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -3.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
