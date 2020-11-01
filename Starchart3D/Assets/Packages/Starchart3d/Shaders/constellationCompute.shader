@@ -46,6 +46,7 @@ Properties{
 	fixed4 frag(v2f i): SV_TARGET{
 		float a = GetAlpha2D(i.uv);
 		return fixed4(_Color.rgb,_Color.a * a);
+		// return fixed4(_Color.rgba);
 		// return fixed4(abs(i.uv * 2 - float2(1,1)),0,1);	
     }
     ENDCG

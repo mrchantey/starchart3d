@@ -1,15 +1,14 @@
 #pragma kernel CSMain
 
-#include "./starUtility.cginc"
-
+#include "./starUtilityCompute.cginc"
 
 [numthreads(8, 8, 8)]
 void CSMain(uint3 id : SV_DispatchThreadID)
 {
-	int si = GetThreadIndex(id);
-	if(si == -1)	return;
+	int i = GetThreadIndex(id);
+	if(i == -1)	return;
 
-	int vi = si * 4;
-	PointsToStar(si,vi);
-	// vertices[vi] = float4(si,vi,0,0);
+	int pi = i;
+	int vi = i * 4;
+	PointsToStar(pi,vi);
 }

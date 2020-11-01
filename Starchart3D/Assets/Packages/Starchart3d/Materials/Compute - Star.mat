@@ -53,7 +53,7 @@ Material:
     - _BlendDestin: 1
     - _BlendSource: 5
     - _BumpScale: 1
-    - _Cull: 2
+    - _Cull: 0
     - _Cutoff: 0.5
     - _DstBlend: 0
     - _EnvironmentReflections: 1
@@ -69,6 +69,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _UseStarColors: 0
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 0

@@ -10,5 +10,5 @@ void CSMain(uint3 id : SV_DispatchThreadID)
 
 	int pi = i;
 	int vi = i * 4;
-	PointsToQuad(positions[pi],vi);
+	PointsToQuad(pi,vi);
 }

@@ -7,8 +7,6 @@ namespace Ahoy.Compute
 	public class Vector3Data : PositionData
 	{
 		public Vector3[] data;
-		public override int numPositions { get { return data.Length; } }
-		public override Vector3[] GetPositions() { return data; }
-
+		protected override Vector3[] GetPositions() { return data; }
 	}
 }

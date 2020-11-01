@@ -11,7 +11,7 @@ namespace Ahoy.Compute
 
 		public new Camera camera;
 
-		public List<ComputeRendererBase> computeRenderers;
+		public List<ComputeRenderer> computeRenderers;
 
 		UnityEngine.Matrix4x4 V, P, VP;
 
@@ -20,6 +20,7 @@ namespace Ahoy.Compute
 		void OnEnable()
 		{
 			RenderPipelineManager.beginFrameRendering += OnPreRenderURP;
+			HandleDefaultValues();
 		}
 
 		void OnDisable()
@@ -47,6 +48,16 @@ namespace Ahoy.Compute
 			renderers.ForEach(m => m.Render(camera));
 		}
 
+		void HandleDefaultValues()
+		{
+			Shader.SetGlobalFloat("_Size", 1);
+			Shader.SetGlobalFloat("_ScaleDivisor", 1);
+			Shader.SetGlobalFloat("_ScaleRange", 0);
+			Shader.SetGlobalFloat("_ScaleMax", 1);
+			Shader.SetGlobalInt("_ScreenSpace", 0);
+			Shader.SetGlobalColor("_Color", Color.white);
+		}
+
 		// UnityEngine.Rendering.
 
 		void HandleScreenParams()
@@ -61,7 +72,7 @@ namespace Ahoy.Compute
 			}
 		}
 
-		void HandleMatrices(ComputeRendererBase[] renderers)
+		void HandleMatrices(ComputeRenderer[] renderers)
 		{
 			MatrixUtility.CalculateViewProjectionMatrices(camera, out V, out P, out VP);
 			Shader.SetGlobalMatrix("Ahoy_V", V);
@@ -89,15 +100,6 @@ namespace Ahoy.Compute
 			Shader.SetGlobalFloat("Ahoy_DeltaTime", Time.deltaTime);
 			Shader.SetGlobalFloat("Ahoy_Time", Time.time);
 		}
-
-		// void Update()
-		// {
-		// 	DispatchAndRender();
-		// }
-
-
-
-
 
 	}
 }

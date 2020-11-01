@@ -9,21 +9,28 @@ namespace Starchart3D
 	[CreateAssetMenu(fileName = "Constellation Shader Data", menuName = "Starchart3D/Constellation Shader Data", order = 0)]
 	public class ConstellationShaderData : PositionData
 	{
-
 		public TextAsset constellationsJson;
+		ConstellationInfo[] constellations;
 
-		public ConstellationInfo[] constellations;
-		public StarInfo[] stars;
+		ComputeBuffer starIds;
 
-		void OnEnable()
+		protected override Vector3[] GetPositions()
 		{
-			if (constellationsJson == null) return;
+			if (constellationsJson == null) return null;
 			constellations = JsonArrayUtility.ArrayFromJson<ConstellationInfo>(constellationsJson.text);
-			stars = constellations.SelectMany(c => c.stars).ToArray();
+			var ids = constellations.SelectMany(c => c.stars).Select(s => s.hygId).ToArray();
+			var positions = constellations.SelectMany(c => c.stars).Select(s => s.position).ToArray();
+			starIds = new ComputeBuffer(ids.Length, sizeof(uint));
+			starIds.SetData(ids);
+			return positions.ToArray();
 		}
 
-		public override int numPositions { get { return stars.Length; } }
-		public override Vector3[] GetPositions() { return stars.Select(s => s.position).ToArray(); }
+		protected override void Cleanup()
+		{
+			base.Cleanup();
+			if (starIds != null)
+				starIds.Dispose();
+		}
 
 	}
 }

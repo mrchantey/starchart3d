@@ -11,5 +11,5 @@ void CSMain(uint3 id : SV_DispatchThreadID)
 	int pi0 = i*2;
 	int pi1 = pi0 + 1;
 	int vi = i * 4;
-	PointsToLine(positions[pi0],positions[pi1],vi);
+	PointsToLine(pi0,pi1,vi);
 }

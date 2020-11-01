@@ -11,20 +11,38 @@ namespace Starchart3D
 	{
 
 		public TextAsset starsJson;
-
-		public StarInfo[] stars;
 		public bool skipSol = true;
 
-		void OnEnable()
+		ComputeBuffer starsCompute;
+		StarInfo[] stars;
+
+		public override void ApplyToShaders(ComputeInstance computeInstance, MaterialInstance materialInstance)
 		{
-			if (starsJson == null) return;
+			base.ApplyToShaders(computeInstance, materialInstance);
+			computeInstance.SetBuffer("stars", starsCompute);
+			materialInstance.SetBuffer("stars", starsCompute);
+		}
+
+		protected override Vector3[] GetPositions()
+		{
+			if (starsJson == null) return null;
 			stars = JsonArrayUtility.ArrayFromJson<StarInfo>(starsJson.text);
 			if (skipSol)
 				stars = stars.Skip(1).ToArray();
+
+			starsCompute = new ComputeBuffer(stars.Length, StarInfoShader.stride);
+			var infos = stars.Select(s => new StarInfoShader(s)).ToArray();
+			starsCompute.SetData(infos);
+			return stars.Select(s => s.position).ToArray();
 		}
 
-		public override int numPositions { get { return stars.Length; } }
-		public override Vector3[] GetPositions() { return stars.Select(s => s.position).ToArray(); }
+		protected override void Cleanup()
+		{
+			base.Cleanup();
+			if (starsCompute != null)
+				starsCompute.Dispose();
+		}
+
 
 	}
 }

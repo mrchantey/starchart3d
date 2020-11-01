@@ -1,7 +1,7 @@
 #ifndef STARCHART3D_STAR_UTILITYRENDER
 #define STARCHART3D_STAR_UTILITYRENDER
 
-#include "./starInfo.cginc"
+// #include "./starInfo.cginc"
 
 
 float 
@@ -10,7 +10,7 @@ _TwinkleFrequency,
 _TwinkleAmplitude,
 ___;
 
-StructuredBuffer<StarInfo> stars;
+// StructuredBuffer<StarInfo> stars;
 StructuredBuffer<float4> vertices;
 
 

@@ -9,9 +9,9 @@ namespace Ahoy.Compute
 		public int numQuads = 1;
 		public float deltaWidth = 0.1f;
 
-		public override int numPositions { get { return numQuads; } }
+		// public override int numVertices { get { return numPositions * 4; } }
 
-		public override Vector3[] GetPositions()
+		protected override Vector3[] GetPositions()
 		{
 			var width = Mathf.FloorToInt(Mathf.Sqrt(numQuads));
 			Vector3 offset = new Vector3(-1, -1, 0) * width / 2f * deltaWidth;
@@ -24,6 +24,5 @@ namespace Ahoy.Compute
 			});
 			return positions;
 		}
-
 	}
 }

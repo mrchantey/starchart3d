@@ -5,11 +5,22 @@
 // #include "../../Ahoy.Shaders/Shaders/utility.cginc"
 
 float4x4 Ahoy_M, Ahoy_V, Ahoy_P, Ahoy_MV, Ahoy_VP, Ahoy_MVP;
-int Ahoy_NumThreads, Ahoy_NumThreadsX, Ahoy_NumThreadsY, Ahoy_NumThreadsZ;
-float Ahoy_Time,Ahoy_DeltaTime;
 float4 Ahoy_ScreenParams;
-float _Size;
-bool _ScreenSpace;
+int 
+Ahoy_NumThreads, 
+Ahoy_NumThreadsX, 
+Ahoy_NumThreadsY, 
+Ahoy_NumThreadsZ,
+_ScreenSpace;
+
+
+float 
+Ahoy_Time,
+Ahoy_DeltaTime,
+_Size,
+_ScaleDivisor,
+_ScaleRange,
+_ScaleMax;
 
 StructuredBuffer<float3> positions;
 StructuredBuffer<int> indices;
@@ -38,14 +49,20 @@ float GetScreenScale(float4 pos_V){
 }
 
 float GetScale(float4 pos_V){
-	float size = _Size == 0 ? 1 : _Size;
-	if(_ScreenSpace)
-		return GetScreenScale(pos_V) * size * 0.1;
-	return size;
+	if(_ScreenSpace == 1)
+		return GetScreenScale(pos_V) * _Size * 0.1;
+	return _Size;
 }
 
-// void PointsToQuad(float3 pos_M, out float4 vertices[4]){
-void PointsToQuad(float3 pos_M, int vi){
+float3 GetModelPosition(float3 pos){
+	float3 scaled = pos / _ScaleDivisor;
+	float3 normalized = normalize(pos);
+    return lerp(scaled,normalized,_ScaleRange) * _ScaleMax;
+}
+
+
+void PointsToQuad(int pi, int vi){
+	float3 pos_M = GetModelPosition(positions[pi]);
 	float4 pos_V = mul(Ahoy_MV,float4(pos_M,1));
 
 	float scale = GetScale(pos_V);
@@ -63,9 +80,13 @@ void PointsToQuad(float3 pos_M, int vi){
 
 
 // void PointsToLine(float3 pos0_M, float3 pos1_M, out float4 vertices[4]){
-void PointsToLine(float3 pos0_M, float3 pos1_M, int vi){
+void PointsToLine(int pi0, int pi1, int vi){
+	float3 pos0_M = GetModelPosition(positions[pi0]);
+	float3 pos1_M = GetModelPosition(positions[pi1]);
+
 	float4 pos0_V = mul(Ahoy_MV,float4(pos0_M,1));
 	float4 pos1_V = mul(Ahoy_MV,float4(pos1_M,1));
+
 
 
 	float scale0 = GetScale(pos0_V);
@@ -76,7 +97,7 @@ void PointsToLine(float3 pos0_M, float3 pos1_M, int vi){
 	float3 dirRight = pos1_V.xyz - pos0_V.xyz;
 	float3 dirUp = normalize(cross(dirFwd,dirRight));
 
-	if(!_ScreenSpace)
+	if(_ScreenSpace == 0)
 		dirUp *= -1;
 
 	float3 posOff0 = pos1_V + dirUp * scale1;

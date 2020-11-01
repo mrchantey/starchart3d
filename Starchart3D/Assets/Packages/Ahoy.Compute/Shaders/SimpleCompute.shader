@@ -33,7 +33,6 @@ Properties{
 
 	StructuredBuffer<float4> vertices;
 
-	// v2f vert (appdata v, uint iId : SV_INSTANCEID, uint vId : SV_VERTEXID){ 
 	v2f vert (uint vId : SV_VERTEXID){ 
         v2f o;
 		o.pos = vertices[vId];
