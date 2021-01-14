@@ -1,9 +1,9 @@
 using UnityEngine;
 using Ahoy;
-using Starchart3D;
 using System.Linq;
+using System.Collections.Generic;
 
-namespace StarChart3D
+namespace Starchart3D
 {
 
 	public class EquatorialTrackerSystem : MonoBehaviour
@@ -16,7 +16,14 @@ namespace StarChart3D
 
 
 
-		public EquatorialTracker[] trackers;
+		public List<EquatorialTracker> trackers;
+
+		void Update()
+		{
+			var lst = StarMath.LocalSiderealTime(astrobodiesSO.value, geographicCoordsSO.value, day.value);
+			trackers = trackers.Where(t => t != null).ToList();
+			trackers.ForEach(t => UpdateTrackerPosition(t, lst));
+		}
 
 		void UpdateTrackerPosition(EquatorialTracker tracker, double lst)
 		{
@@ -29,11 +36,6 @@ namespace StarChart3D
 			tracker.transform.rotation = Quaternion.LookRotation(fwd, Vector3.up);
 		}
 
-		void Update()
-		{
-			var lst = StarMath.LocalSiderealTime(astrobodiesSO.value, geographicCoordsSO.value, day.value);
-			trackers.ForEach(t => UpdateTrackerPosition(t, lst));
-		}
 	}
 
 }

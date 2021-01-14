@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: {r: 1, g: 1, b: 1, a: 1}
   screenSpace: 1
-  size: 0.44
+  size: 0.17
   scaleRange: 1
   scaleMax: 200
   scaleDivisor: 1

@@ -12,7 +12,8 @@ StructuredBuffer<StarInfo> stars;
 
 
 float GetMagnitude(int si){
-	float magRaw = _ScreenSpace ? stars[si].apparentMagnitude : stars[si].absoluteMagnitude;
+	// float magRaw = _ScreenSpace ? stars[si].apparentMagnitude : stars[si].absoluteMagnitude;
+	float magRaw = stars[si].apparentMagnitude;
 	float magLog = clamp(magRaw,0, 10);
 	float magLinear = pow(_MagDelta, -magLog);
 	float magClamped = clamp(magLinear,0, _MagMax);

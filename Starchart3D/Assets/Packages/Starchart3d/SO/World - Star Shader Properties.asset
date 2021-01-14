@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: World - Star Shader Properties
   m_EditorClassIdentifier: 
   color: {r: 1, g: 1, b: 1, a: 1}
-  screenSpace: 1
-  size: 6
+  screenSpace: 0
+  size: 1.55
   scaleRange: 0.2
   scaleMax: 5
-  scaleDivisor: 1
+  scaleDivisor: 1000
   glow: 0.04
   magDelta: 2.5
   magMax: 0.14

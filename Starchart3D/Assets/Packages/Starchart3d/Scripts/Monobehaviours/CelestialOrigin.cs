@@ -66,7 +66,7 @@ namespace Starchart3D
 					break;
 
 			}
-			transform.rotation = Quaternion.LookRotation(dirForward, dirUp);
+			transform.localRotation = Quaternion.LookRotation(dirForward, dirUp);
 			equatorialOrigin.value = Quaternion.LookRotation(dirVernalEquinox_vec, dirCelestialPole_vec);
 		}
 
